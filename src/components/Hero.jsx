@@ -1,12 +1,13 @@
-import { motion } from "framer-motion";
+import { useRef, useEffect, useState } from "react";
+import { motion, useInView } from "framer-motion";
 import { ArrowRight, Layers, Globe } from "lucide-react";
 import FiperCard3D from "./FiperCard3D";
 
 const stats = [
-  { value: "5 min", label: "Virtual activation", pos: "top-left" },
-  { value: "Instant", label: "FREEZE", pos: "top-right" },
-  { value: "$0", label: "Hidden fees", pos: "bottom-left" },
-  { value: "Global", label: "ATM access", pos: "bottom-right" },
+  { value: 5, suffix: " min", label: "Virtual activation", pos: "top-left" },
+  { value: "Instant", suffix: "", label: "FREEZE — Freeze Anytime", pos: "top-right", isText: true },
+  { value: 0, prefix: "$", suffix: "", label: "Hidden fees", pos: "bottom-left" },
+  { value: "Global", suffix: "", label: "ATM access", pos: "bottom-right", isText: true },
 ];
 
 const badgePositions = {
@@ -32,6 +33,37 @@ const fadeUp = {
   },
 };
 
+function AnimatedCounter({ value, prefix = "", suffix = "", isText = false }) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const [display, setDisplay] = useState(isText ? value : 0);
+
+  useEffect(() => {
+    if (!isInView || isText) return;
+    const target = typeof value === "number" ? value : parseInt(value, 10);
+    if (isNaN(target)) return;
+
+    const duration = 1200;
+    const startTime = performance.now();
+
+    function animate(currentTime) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setDisplay(Math.round(eased * target));
+      if (progress < 1) requestAnimationFrame(animate);
+    }
+
+    requestAnimationFrame(animate);
+  }, [isInView, value, isText]);
+
+  return (
+    <span ref={ref}>
+      {isText ? value : `${prefix}${display}${suffix}`}
+    </span>
+  );
+}
+
 export default function Hero() {
   return (
     <section
@@ -42,13 +74,14 @@ export default function Hero() {
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-red-600/10 blur-[120px]" />
         <div className="absolute bottom-0 left-1/4 w-[600px] h-[600px] rounded-full bg-red-900/5 blur-[120px]" />
-        {/* Grid overlay */}
+        {/* Dot grid pattern at 5% opacity */}
         <div
-          className="absolute inset-0 opacity-[0.03]"
+          className="absolute inset-0"
           style={{
+            opacity: 0.05,
             backgroundImage:
-              "linear-gradient(rgba(255,255,255,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.3) 1px, transparent 1px)",
-            backgroundSize: "60px 60px",
+              "radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px)",
+            backgroundSize: "40px 40px",
           }}
         />
       </div>
@@ -59,7 +92,7 @@ export default function Hero() {
         animate="show"
         className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 text-center"
       >
-        {/* Badge — FIX 6: Globe icon */}
+        {/* Badge */}
         <motion.div variants={fadeUp} className="mb-8">
           <span className="inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/5 px-5 py-2 text-xs font-medium text-zinc-400">
             <Globe size={14} className="text-fiper animate-pulse" />
@@ -67,16 +100,17 @@ export default function Hero() {
           </span>
         </motion.div>
 
-        {/* Headline */}
+        {/* Headline — 3 clean lines */}
         <motion.h1
           variants={fadeUp}
-          className="mx-auto max-w-5xl text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl"
+          className="mx-auto max-w-5xl text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl"
           style={{ letterSpacing: "-0.04em" }}
         >
           Turn your trading profits
           <br />
-          into <span className="text-gradient-red">real power</span> in
-          Minutes
+          into <span className="text-gradient-red">real power</span>
+          <br />
+          in Minutes
         </motion.h1>
 
         {/* Subtext */}
@@ -111,14 +145,37 @@ export default function Hero() {
           </a>
         </motion.div>
 
-        {/* FIX 3: Floating Card with surrounding stat badges */}
+        {/* Card with animated red spotlight */}
         <motion.div
           variants={fadeUp}
           className="mt-12 flex justify-center lg:mt-14"
         >
           <div className="relative">
-            {/* Red radial glow behind card */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] rounded-full bg-red-600/20 blur-[100px] pointer-events-none" />
+            {/* Animated red spotlight orb */}
+            <motion.div
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full pointer-events-none"
+              style={{
+                background: "radial-gradient(circle, rgba(220,38,38,0.25) 0%, rgba(220,38,38,0.08) 40%, transparent 70%)",
+              }}
+              animate={{
+                scale: [1, 1.15, 1],
+                opacity: [0.6, 1, 0.6],
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+
+            {/* Red glow shadow beneath card */}
+            <div
+              className="absolute bottom-[-30px] left-1/2 -translate-x-1/2 w-[80%] h-[60px] rounded-full pointer-events-none"
+              style={{
+                background: "radial-gradient(ellipse, rgba(220,38,38,0.4) 0%, transparent 70%)",
+                filter: "blur(24px)",
+              }}
+            />
 
             <FiperCard3D />
 
@@ -138,7 +195,12 @@ export default function Hero() {
                 >
                   <div className="rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 px-5 py-3 text-center transition-all duration-300 hover:bg-white/[0.08] hover:border-red-500/20 hover:shadow-lg hover:shadow-red-500/10">
                     <p className="text-lg font-bold text-white">
-                      {stat.value}
+                      <AnimatedCounter
+                        value={stat.value}
+                        prefix={stat.prefix}
+                        suffix={stat.suffix}
+                        isText={stat.isText}
+                      />
                     </p>
                     <p className="text-[11px] text-zinc-500">{stat.label}</p>
                   </div>
@@ -158,7 +220,14 @@ export default function Hero() {
               key={stat.label}
               className="rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-4 text-center"
             >
-              <p className="text-xl font-bold text-white">{stat.value}</p>
+              <p className="text-xl font-bold text-white">
+                <AnimatedCounter
+                  value={stat.value}
+                  prefix={stat.prefix}
+                  suffix={stat.suffix}
+                  isText={stat.isText}
+                />
+              </p>
               <p className="mt-0.5 text-[11px] text-zinc-500">{stat.label}</p>
             </div>
           ))}

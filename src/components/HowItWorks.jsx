@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import { UserPlus, CreditCard, ShoppingBag, ArrowRight } from "lucide-react";
 
 const steps = [
@@ -22,6 +23,62 @@ const steps = [
   },
 ];
 
+function AnimatedConnectingLine() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  return (
+    <div
+      ref={ref}
+      className="hidden lg:block absolute top-[60px] left-[16.67%] right-[16.67%] h-[2px]"
+    >
+      <svg
+        className="w-full h-full overflow-visible"
+        preserveAspectRatio="none"
+      >
+        <defs>
+          <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#DC2626" stopOpacity="0.6" />
+            <stop offset="50%" stopColor="#DC2626" stopOpacity="0.2" />
+            <stop offset="100%" stopColor="#DC2626" stopOpacity="0.6" />
+          </linearGradient>
+        </defs>
+        <motion.line
+          x1="0"
+          y1="1"
+          x2="100%"
+          y2="1"
+          stroke="url(#lineGrad)"
+          strokeWidth="2"
+          strokeLinecap="round"
+          initial={{ pathLength: 0, opacity: 0 }}
+          animate={isInView ? { pathLength: 1, opacity: 1 } : {}}
+          transition={{ duration: 1.5, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+        />
+        {/* Animated dot traveling along the line */}
+        <motion.circle
+          r="4"
+          fill="#DC2626"
+          initial={{ cx: "0%", cy: 1, opacity: 0 }}
+          animate={
+            isInView
+              ? {
+                  cx: ["0%", "100%"],
+                  opacity: [0, 1, 1, 0],
+                }
+              : {}
+          }
+          transition={{
+            duration: 2,
+            delay: 0.5,
+            ease: "easeInOut",
+          }}
+        />
+      </svg>
+    </div>
+  );
+}
+
 export default function HowItWorks() {
   return (
     <section id="how-it-works" className="relative py-24 md:py-32">
@@ -41,27 +98,15 @@ export default function HowItWorks() {
             className="text-4xl font-semibold leading-[1.05] sm:text-5xl md:text-6xl lg:text-7xl"
             style={{ letterSpacing: "-0.04em" }}
           >
-            Three steps.
-            <span className="text-zinc-500"> That&apos;s it.</span>
+            Up and running
+            <span className="text-zinc-500"> in three simple steps.</span>
           </h2>
         </motion.div>
 
         {/* Steps */}
         <div className="relative grid gap-8 lg:grid-cols-3">
-          {/* Connecting line (desktop) */}
-          <div className="hidden lg:block absolute top-[60px] left-[16.67%] right-[16.67%] h-px">
-            <motion.div
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{
-                duration: 1.2,
-                delay: 0.5,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-              className="h-full bg-gradient-to-r from-fiper/50 via-fiper/20 to-fiper/50 origin-left"
-            />
-          </div>
+          {/* Animated connecting SVG line */}
+          <AnimatedConnectingLine />
 
           {steps.map((step, i) => (
             <motion.div
@@ -74,19 +119,37 @@ export default function HowItWorks() {
                 delay: i * 0.2,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="relative text-center"
+              whileHover="hover"
+              className="relative text-center group"
             >
               {/* Number */}
-              <div className="mx-auto mb-6 flex h-[72px] w-[72px] items-center justify-center rounded-2xl bg-fiper/10 border border-fiper/20">
+              <motion.div
+                className="mx-auto mb-6 flex h-[72px] w-[72px] items-center justify-center rounded-2xl bg-fiper/10 border border-fiper/20"
+                variants={{
+                  hover: { scale: 1.1, transition: { duration: 0.3 } },
+                }}
+              >
                 <span className="text-2xl font-bold text-fiper">
                   {step.num}
                 </span>
-              </div>
+              </motion.div>
 
               {/* Icon */}
-              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-white/5">
-                <step.icon size={20} className="text-zinc-400" />
-              </div>
+              <motion.div
+                className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-white/5"
+                variants={{
+                  hover: {
+                    y: [-2, 2, -2],
+                    transition: {
+                      duration: 0.6,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    },
+                  },
+                }}
+              >
+                <step.icon size={20} className="text-zinc-400 group-hover:text-fiper transition-colors duration-300" />
+              </motion.div>
 
               <h3 className="text-xl font-semibold mb-3">{step.title}</h3>
               <p className="text-base leading-relaxed text-zinc-400 max-w-xs mx-auto">
@@ -96,7 +159,7 @@ export default function HowItWorks() {
           ))}
         </div>
 
-        {/* Mid-page CTA — ghost style */}
+        {/* Mid-page CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

@@ -8,9 +8,7 @@ export default function FiperCard3D({ variant = "virtual" }) {
       className="relative w-[340px] h-[215px] sm:w-[380px] sm:h-[240px]"
       style={{ perspective: "1200px" }}
       animate={{
-        y: [0, -12, 0],
-        rotateY: [-3, 3, -3],
-        rotateX: [2, -1, 2],
+        y: [-10, 10, -10],
       }}
       transition={{
         duration: 6,
@@ -21,15 +19,18 @@ export default function FiperCard3D({ variant = "virtual" }) {
       <div
         className={`relative w-full h-full rounded-2xl overflow-hidden ${
           isPhysical
-            ? "border border-white/10 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.8),0_0_40px_-10px_rgba(220,38,38,0.15)]"
-            : "shadow-2xl shadow-red-500/10"
+            ? "border border-white/10"
+            : ""
         }`}
         style={{
           background: isPhysical
             ? "linear-gradient(145deg, #27272a 0%, #18181b 35%, #09090b 65%, #18181b 100%)"
             : "linear-gradient(135deg, #DC2626 0%, #991B1B 40%, #7F1D1D 70%, #450A0A 100%)",
-          transform: "rotateY(-5deg) rotateX(5deg)",
+          transform: "rotateY(-15deg) rotateX(10deg)",
           transformStyle: "preserve-3d",
+          boxShadow: isPhysical
+            ? "0 25px 60px -15px rgba(0,0,0,0.8), 0 0 40px -10px rgba(220,38,38,0.15)"
+            : "0 30px 80px -15px rgba(220,38,38,0.4), 0 0 60px -10px rgba(220,38,38,0.3)",
         }}
       >
         {/* Physical card: metallic light reflection */}
@@ -133,7 +134,6 @@ export default function FiperCard3D({ variant = "virtual" }) {
                   "linear-gradient(135deg, #d4af37 0%, #f0d060 30%, #b8860b 70%, #d4af37 100%)",
               }}
             >
-              {/* Chip horizontal lines */}
               <div className="w-full h-full flex flex-col justify-center gap-[3px] px-1.5">
                 <div className="h-px bg-black/20" />
                 <div className="h-px bg-black/15" />

@@ -55,23 +55,38 @@ export default function FourReasons() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.7, delay: i * 0.12 }}
-              whileHover={{ y: -6, transition: { duration: 0.25 } }}
-              className="group glass card-shine rounded-3xl p-8 md:p-10 transition-all duration-300 hover:bg-white/[0.04] hover:border-white/20"
+              whileHover={{
+                scale: 1.03,
+                transition: { duration: 0.3 },
+              }}
+              className="group relative glass card-shine rounded-3xl p-8 md:p-10 overflow-hidden transition-all duration-500 hover:bg-white/[0.04] hover:border-red-500/30 hover:shadow-[0_0_30px_-5px_rgba(220,38,38,0.15)]"
             >
-              <span className="text-5xl font-bold text-fiper/20 group-hover:text-fiper/30 transition-colors duration-300">
+              {/* Giant watermark number */}
+              <span
+                className="absolute -top-4 -right-2 text-[8rem] md:text-[10rem] font-black leading-none pointer-events-none select-none"
+                style={{
+                  background: "linear-gradient(180deg, rgba(220,38,38,0.12) 0%, transparent 80%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >
                 {r.num}
               </span>
-              <h3 className="mt-4 text-xl font-semibold text-white mb-4">
-                {r.title}
-              </h3>
-              <p className="text-base leading-relaxed text-zinc-400">
-                {r.desc}
-              </p>
+
+              <div className="relative z-10">
+                <h3 className="mt-4 text-xl font-semibold text-white mb-4">
+                  {r.title}
+                </h3>
+                <p className="text-base leading-relaxed text-zinc-400">
+                  {r.desc}
+                </p>
+              </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Mid-page CTA — ghost style */}
+        {/* CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

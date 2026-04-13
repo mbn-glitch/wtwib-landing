@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Check, X, ArrowRight } from "lucide-react";
+import { Check, X, ArrowRight, Star } from "lucide-react";
 import FiperCard3D from "./FiperCard3D";
 
 const plans = [
@@ -9,6 +9,7 @@ const plans = [
     badge: "Best for daily use & Apple Pay",
     variant: "virtual",
     cta: "Activate your card instantly",
+    popular: true,
     features: [
       { text: "Activation in 5 minutes", included: true },
       { text: "Apple Pay supported", included: true },
@@ -24,7 +25,6 @@ const plans = [
       { label: "Reverse", value: "Depends on currency" },
       { label: "FX Rate", value: "By card issuer" },
     ],
-    highlighted: true,
   },
   {
     name: "Physical Card",
@@ -32,6 +32,7 @@ const plans = [
     badge: "Best for travel & ATM withdrawals",
     variant: "physical",
     cta: "Get your card for global use",
+    popular: false,
     features: [
       { text: "Activation in 5–10 minutes", included: true },
       { text: "Worldwide ATM access ($2k/week)", included: true },
@@ -47,7 +48,6 @@ const plans = [
       { label: "Reverse", value: "Depends on currency" },
       { label: "Delivery", value: "1–2 weeks" },
     ],
-    highlighted: false,
   },
 ];
 
@@ -78,8 +78,13 @@ export default function ChooseCard() {
           </h2>
         </motion.div>
 
-        {/* Cards */}
-        <div className="grid gap-8 lg:grid-cols-2 max-w-5xl mx-auto">
+        {/* Cards with vertical divider */}
+        <div className="relative grid gap-8 lg:grid-cols-2 max-w-5xl mx-auto">
+          {/* Vertical divider (desktop only) */}
+          <div className="hidden lg:block absolute top-[10%] bottom-[10%] left-1/2 -translate-x-1/2 w-px">
+            <div className="h-full bg-gradient-to-b from-transparent via-white/10 to-transparent" />
+          </div>
+
           {plans.map((plan, idx) => (
             <motion.div
               key={plan.name}
@@ -87,14 +92,28 @@ export default function ChooseCard() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.7, delay: idx * 0.15 }}
-              className={`relative rounded-3xl overflow-hidden ${
-                plan.highlighted
-                  ? "border border-fiper/30 bg-gradient-to-b from-red-500/5 to-transparent"
-                  : "border border-white/[0.06] bg-white/[0.02]"
+              whileHover={{
+                y: -8,
+                transition: { duration: 0.3, ease: "easeOut" },
+              }}
+              className={`relative rounded-3xl overflow-hidden transition-all duration-500 hover:shadow-[0_0_40px_-10px_rgba(220,38,38,0.2)] ${
+                plan.popular
+                  ? "border border-fiper/30 bg-gradient-to-b from-red-500/5 to-transparent hover:border-fiper/50"
+                  : "border border-white/[0.06] bg-white/[0.02] hover:border-red-500/30"
               }`}
             >
-              {plan.highlighted && (
+              {plan.popular && (
                 <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-fiper to-transparent" />
+              )}
+
+              {/* MOST POPULAR badge */}
+              {plan.popular && (
+                <div className="absolute top-5 right-5 z-10">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-red-600 to-red-500 px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-wider text-white shadow-lg shadow-red-500/25">
+                    <Star size={12} fill="currentColor" />
+                    Most Popular
+                  </span>
+                </div>
               )}
 
               <div className="p-8 lg:p-10">
@@ -169,7 +188,7 @@ export default function ChooseCard() {
                 <a
                   href="#"
                   className={`group flex w-full items-center justify-center gap-2 rounded-full py-4 text-sm font-semibold transition-all duration-300 ${
-                    plan.highlighted
+                    plan.popular
                       ? "bg-fiper text-white hover:bg-fiper-dark hover:shadow-lg hover:shadow-red-500/25"
                       : "bg-white/5 border border-white/10 text-white hover:bg-white/10"
                   }`}
