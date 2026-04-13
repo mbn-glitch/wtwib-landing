@@ -29,7 +29,13 @@
       "Bash(curl -s -o /dev/null -w \"%{http_code} %{size_download}\" http://localhost:5176/favicon-32x32.png)",
       "Bash(curl -s -o /dev/null -w \"%{http_code} %{size_download}\" http://localhost:5176/apple-touch-icon.png)",
       "Bash(git check-ignore:*)",
-      "Bash(git rm:*)"
+      "Bash(git rm:*)",
+      "Bash(echo \"Exit: $?\")",
+      "Bash(git remote:*)",
+      "Bash(git push:*)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5176)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5175)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5174)"
     ]
   },
   "enableAllProjectMcpServers": true,
