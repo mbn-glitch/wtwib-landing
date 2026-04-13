@@ -6,6 +6,11 @@
   --color-fiper-dark: #B91C1C;
 }
 
+html,
+body {
+  overflow-x: hidden;
+}
+
 html {
   scroll-behavior: smooth;
 }

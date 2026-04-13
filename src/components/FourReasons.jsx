@@ -26,7 +26,7 @@ const reasons = [
 
 export default function FourReasons() {
   return (
-    <section className="relative py-24 md:py-32">
+    <section className="relative py-24 md:py-32 overflow-hidden">
       <div className="mx-auto max-w-7xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

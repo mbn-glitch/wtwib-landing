@@ -68,7 +68,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-20"
+      className="relative min-h-screen flex flex-col items-center justify-center overflow-x-hidden overflow-y-visible pt-20"
     >
       {/* Background gradient mesh */}
       <div className="absolute inset-0 pointer-events-none">

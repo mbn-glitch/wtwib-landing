@@ -53,7 +53,7 @@ const plans = [
 
 export default function ChooseCard() {
   return (
-    <section id="cards" className="relative py-24 md:py-32">
+    <section id="cards" className="relative py-24 md:py-32 overflow-hidden">
       {/* Background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full bg-red-500/[0.03] blur-[200px] pointer-events-none" />
 

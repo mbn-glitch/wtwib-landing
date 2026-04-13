@@ -26,7 +26,7 @@ const items = [
 
 export default function TrustSecurity() {
   return (
-    <section className="relative py-24 md:py-32">
+    <section className="relative py-24 md:py-32 overflow-hidden">
       {/* Background accent */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
 
