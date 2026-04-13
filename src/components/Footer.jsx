@@ -72,7 +72,7 @@ export default function Footer() {
             <h4 className="text-sm font-semibold uppercase tracking-wider text-white mb-4">{t("footer.legal")}</h4>
             <ul className="space-y-3">
               {[t("footer.terms"), t("footer.privacy"), t("footer.cookie"), t("footer.refund")].map((label) => (
-                <li key={label}><a href="#" className="text-sm text-zinc-500 transition-colors duration-200 hover:text-white">{label}</a></li>
+                <li key={label}><a href="https://fiper.me/legal-documentation" target="_blank" rel="noopener noreferrer" className="text-sm text-zinc-500 transition-colors duration-200 hover:text-white">{label}</a></li>
               ))}
             </ul>
           </div>
