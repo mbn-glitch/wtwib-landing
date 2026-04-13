@@ -186,7 +186,9 @@ export default function ChooseCard() {
 
                 {/* CTA */}
                 <a
-                  href="#"
+                  href="https://crm.fiper.me"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className={`group flex w-full items-center justify-center gap-2 rounded-full py-4 text-sm font-semibold transition-all duration-300 ${
                     plan.popular
                       ? "bg-fiper text-white hover:bg-fiper-dark hover:shadow-lg hover:shadow-red-500/25"

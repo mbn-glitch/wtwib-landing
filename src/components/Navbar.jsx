@@ -58,7 +58,9 @@ export default function Navbar() {
           {/* Desktop CTA */}
           <div className="hidden lg:block">
             <a
-              href="#cards"
+              href="https://crm.fiper.me"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full bg-fiper px-6 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-fiper-dark hover:shadow-lg hover:shadow-red-500/20"
             >
               Get Your Card
@@ -99,7 +101,9 @@ export default function Navbar() {
               ))}
               <div className="pt-4">
                 <a
-                  href="#cards"
+                  href="https://crm.fiper.me"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   onClick={() => setMobileOpen(false)}
                   className="block w-full text-center rounded-full bg-fiper px-6 py-3 text-sm font-semibold text-white"
                 >

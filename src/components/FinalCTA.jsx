@@ -65,7 +65,9 @@ export default function FinalCTA() {
               }}
             />
             <a
-              href="#cards"
+              href="https://crm.fiper.me"
+              target="_blank"
+              rel="noopener noreferrer"
               className="relative group inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-red-600 to-red-500 px-12 py-5 text-lg font-semibold text-white shadow-[0_20px_50px_-10px_rgba(220,38,38,0.5)] transition-all duration-300 hover:shadow-[0_25px_60px_-10px_rgba(220,38,38,0.7)] hover:scale-105"
             >
               Get your Fiper Card now

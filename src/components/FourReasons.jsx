@@ -95,7 +95,9 @@ export default function FourReasons() {
           className="mt-16 text-center"
         >
           <a
-            href="#cards"
+            href="https://crm.fiper.me"
+            target="_blank"
+            rel="noopener noreferrer"
             className="group inline-flex items-center gap-2 rounded-full border border-red-500/60 bg-red-500/10 px-7 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-red-500/20 hover:border-red-500"
           >
             Get Your Fiper Card Now
