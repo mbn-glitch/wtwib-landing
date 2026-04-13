@@ -8,10 +8,10 @@ const LIIcon = () => (<svg viewBox="0 0 24 24" fill="currentColor" className="w-
 const YTIcon = () => (<svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>);
 
 const socials = [
-  { label: "X", icon: XIcon, href: "#" },
-  { label: "Instagram", icon: IGIcon, href: "#" },
-  { label: "LinkedIn", icon: LIIcon, href: "#" },
-  { label: "YouTube", icon: YTIcon, href: "#" },
+  { label: "X", icon: XIcon, href: "https://linktr.ee/fiper" },
+  { label: "Instagram", icon: IGIcon, href: "https://linktr.ee/fiper" },
+  { label: "LinkedIn", icon: LIIcon, href: "https://linktr.ee/fiper" },
+  { label: "YouTube", icon: YTIcon, href: "https://linktr.ee/fiper" },
 ];
 
 export default function Footer() {
@@ -48,7 +48,7 @@ export default function Footer() {
             <p className="mt-4 text-sm leading-relaxed text-zinc-500">{t("footer.tagline")}</p>
             <div className="mt-6 flex items-center gap-3">
               {socials.map((s) => (
-                <a key={s.label} href={s.href} aria-label={s.label} className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-zinc-500 transition-all duration-200 hover:text-white hover:border-white/25 hover:bg-white/5">
+                <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label} className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-zinc-500 transition-all duration-200 hover:text-white hover:border-white/25 hover:bg-white/5">
                   <s.icon />
                 </a>
               ))}
