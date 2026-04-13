@@ -1,13 +1,14 @@
 import { useState, useMemo, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, ArrowRight, LifeBuoy, ArrowLeft } from "lucide-react";
-import categories from "../data/helpCenterData";
+import { getCategories } from "../data/helpCenterData";
+import useDirection from "../hooks/useDirection";
+import LanguageSwitcher from "../components/LanguageSwitcher";
 
-const WHATSAPP_URL =
-  "https://wa.me/97433600905?text=Hello%2C%20I%20need%20help%20with%20my%20Fiper%20Card";
+const WHATSAPP_URL = "https://wa.me/97433600905?text=Hello%2C%20I%20need%20help%20with%20my%20Fiper%20Card";
 
-/* ─── WhatsApp SVG icon ─── */
 function WhatsAppIcon({ className = "w-6 h-6" }) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
@@ -16,69 +17,22 @@ function WhatsAppIcon({ className = "w-6 h-6" }) {
   );
 }
 
-/* ─── Accordion Item ─── */
-function AccordionItem({ faq, isOpen, onToggle, index }) {
+function AccordionItem({ faq, isOpen, onToggle }) {
   return (
-    <div
-      className={`relative rounded-2xl transition-all duration-500 ${
-        isOpen
-          ? "bg-gradient-to-r from-red-500/20 via-red-600/10 to-red-500/20 p-px shadow-[0_0_30px_-5px_rgba(220,38,38,0.15)]"
-          : "bg-gradient-to-r from-white/[0.06] via-white/[0.03] to-white/[0.06] p-px"
-      }`}
-    >
-      <div
-        className={`rounded-2xl transition-all duration-500 ${
-          isOpen
-            ? "bg-gradient-to-b from-red-500/[0.05] to-black/95"
-            : "bg-black/90 hover:bg-white/[0.02]"
-        }`}
-      >
-        <button
-          onClick={onToggle}
-          className="flex w-full items-center justify-between px-6 py-5 text-left group"
-          aria-expanded={isOpen}
-        >
-          <span
-            className={`text-sm font-medium pr-6 transition-colors duration-300 sm:text-base ${
-              isOpen ? "text-white" : "text-zinc-300 group-hover:text-white"
-            }`}
-          >
-            {faq.q}
-          </span>
-          <span
-            className={`flex-shrink-0 flex items-center justify-center w-7 h-7 rounded-full transition-all duration-500 ${
-              isOpen
-                ? "bg-fiper/20 border border-fiper/30 text-fiper"
-                : "bg-white/5 border border-white/10 text-zinc-500 group-hover:border-white/20 group-hover:text-white"
-            }`}
-          >
-            <motion.span
-              animate={{ rotate: isOpen ? 135 : 0 }}
-              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="block text-sm font-light leading-none"
-            >
-              +
-            </motion.span>
+    <div className={`relative rounded-2xl transition-all duration-500 ${isOpen ? "bg-gradient-to-r from-red-500/20 via-red-600/10 to-red-500/20 p-px shadow-[0_0_30px_-5px_rgba(220,38,38,0.15)]" : "bg-gradient-to-r from-white/[0.06] via-white/[0.03] to-white/[0.06] p-px"}`}>
+      <div className={`rounded-2xl transition-all duration-500 ${isOpen ? "bg-gradient-to-b from-red-500/[0.05] to-black/95" : "bg-black/90 hover:bg-white/[0.02]"}`}>
+        <button onClick={onToggle} className="flex w-full items-center justify-between px-6 py-5 text-start group" aria-expanded={isOpen}>
+          <span className={`text-sm font-medium pe-6 transition-colors duration-300 sm:text-base ${isOpen ? "text-white" : "text-zinc-300 group-hover:text-white"}`}>{faq.q}</span>
+          <span className={`flex-shrink-0 flex items-center justify-center w-7 h-7 rounded-full transition-all duration-500 ${isOpen ? "bg-fiper/20 border border-fiper/30 text-fiper" : "bg-white/5 border border-white/10 text-zinc-500 group-hover:border-white/20 group-hover:text-white"}`}>
+            <motion.span animate={{ rotate: isOpen ? 135 : 0 }} transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }} className="block text-sm font-light leading-none">+</motion.span>
           </span>
         </button>
-
         <AnimatePresence initial={false}>
           {isOpen && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{
-                height: { duration: 0.4, ease: [0.16, 1, 0.3, 1] },
-                opacity: { duration: 0.3, delay: 0.1 },
-              }}
-              className="overflow-hidden"
-            >
+            <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ height: { duration: 0.4, ease: [0.16, 1, 0.3, 1] }, opacity: { duration: 0.3, delay: 0.1 } }} className="overflow-hidden">
               <div className="px-6 pb-5 pt-0">
                 <div className="h-px bg-gradient-to-r from-transparent via-red-500/20 to-transparent mb-4" />
-                <p className="text-sm leading-relaxed text-zinc-400">
-                  {faq.a}
-                </p>
+                <p className="text-sm leading-relaxed text-zinc-400">{faq.a}</p>
               </div>
             </motion.div>
           )}
@@ -88,34 +42,19 @@ function AccordionItem({ faq, isOpen, onToggle, index }) {
   );
 }
 
-/* ─── Category Section ─── */
 function CategorySection({ category }) {
   const [openIndex, setOpenIndex] = useState(-1);
   const Icon = category.icon;
-
   return (
     <section id={category.id} className="scroll-mt-32">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-80px" }}
-        transition={{ duration: 0.5 }}
-      >
+      <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.5 }}>
         <div className="flex items-center gap-3 mb-6">
-          <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-fiper/10">
-            <Icon size={20} className="text-fiper" />
-          </div>
+          <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-fiper/10"><Icon size={20} className="text-fiper" /></div>
           <h2 className="text-2xl font-semibold text-white">{category.title}</h2>
         </div>
         <div className="space-y-2.5">
           {category.faqs.map((faq, i) => (
-            <AccordionItem
-              key={i}
-              faq={faq}
-              index={i}
-              isOpen={openIndex === i}
-              onToggle={() => setOpenIndex(openIndex === i ? -1 : i)}
-            />
+            <AccordionItem key={i} faq={faq} isOpen={openIndex === i} onToggle={() => setOpenIndex(openIndex === i ? -1 : i)} />
           ))}
         </div>
       </motion.div>
@@ -123,59 +62,40 @@ function CategorySection({ category }) {
   );
 }
 
-/* ─── Main Page ─── */
 export default function HelpCenter() {
+  const { t } = useTranslation();
+  useDirection();
   const [query, setQuery] = useState("");
 
   useEffect(() => {
-    document.title = "Help Center | Fiper Card";
+    document.title = t("helpCenter.heroTitle1") + " " + t("helpCenter.heroTitle2") + " | Fiper Card";
     window.scrollTo(0, 0);
-  }, []);
+  }, [t]);
 
-  /* Filtered categories based on search */
+  const categories = useMemo(() => getCategories(t), [t]);
+
   const filtered = useMemo(() => {
     if (!query.trim()) return categories;
     const q = query.toLowerCase();
-    return categories
-      .map((cat) => ({
-        ...cat,
-        faqs: cat.faqs.filter(
-          (f) => f.q.toLowerCase().includes(q) || f.a.toLowerCase().includes(q)
-        ),
-      }))
-      .filter((cat) => cat.faqs.length > 0);
-  }, [query]);
+    return categories.map((cat) => ({ ...cat, faqs: cat.faqs.filter((f) => f.q.toLowerCase().includes(q) || f.a.toLowerCase().includes(q)) })).filter((cat) => cat.faqs.length > 0);
+  }, [query, categories]);
 
   const totalResults = filtered.reduce((n, c) => n + c.faqs.length, 0);
 
   return (
     <div className="noise-bg relative min-h-screen bg-black text-white">
-      {/* ─── Navbar ─── */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-black/60 backdrop-blur-xl border-b border-white/10">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="flex items-center justify-between py-5">
-            <Link to="/" className="flex-shrink-0">
-              <img
-                src="/Fiper_Logo_white2.png"
-                alt="Fiper"
-                className="h-20 md:h-24 w-auto object-contain"
-              />
-            </Link>
-            <div className="flex items-center gap-4">
-              <Link
-                to="/"
-                className="hidden sm:inline-flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors"
-              >
-                <ArrowLeft size={14} />
-                Back to Home
+            <Link to="/" className="flex-shrink-0"><img src="/Fiper_Logo_white2.png" alt="Fiper" className="h-20 md:h-24 w-auto object-contain" /></Link>
+            <div className="flex items-center gap-3">
+              <Link to="/" className="hidden sm:inline-flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors">
+                <ArrowLeft size={14} className="rtl-flip" />
+                {t("helpCenter.backToHome")}
               </Link>
-              <a
-                href="https://crm.fiper.me"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-fiper px-5 py-2 text-sm font-semibold text-white transition-all duration-300 hover:bg-fiper-dark"
-              >
-                Get Your Card
+              <LanguageSwitcher />
+              <a href="https://crm.fiper.me" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-fiper px-5 py-2 text-sm font-semibold text-white transition-all duration-300 hover:bg-fiper-dark">
+                {t("nav.getYourCard")}
               </a>
             </div>
           </div>
@@ -183,101 +103,37 @@ export default function HelpCenter() {
       </nav>
 
       <main className="pt-36 pb-24">
-        {/* ─── Hero ─── */}
         <section className="relative overflow-hidden">
-          <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full bg-red-600/8 blur-[120px]" />
-          </div>
+          <div className="absolute inset-0 pointer-events-none"><div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full bg-red-600/8 blur-[120px]" /></div>
           <div className="relative mx-auto max-w-3xl px-6 text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}
-            >
-              <h1
-                className="text-4xl font-bold sm:text-5xl md:text-6xl"
-                style={{ letterSpacing: "-0.04em" }}
-              >
-                How can we{" "}
-                <span className="text-gradient-red">help you?</span>
+            <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
+              <h1 className="text-4xl font-bold sm:text-5xl md:text-6xl" style={{ letterSpacing: "-0.04em" }}>
+                {t("helpCenter.heroTitle1")} <span className="text-gradient-red">{t("helpCenter.heroTitle2")}</span>
               </h1>
-              <p className="mt-4 text-lg text-zinc-400">
-                Find answers, manage your card, and get support — all in one
-                place.
-              </p>
+              <p className="mt-4 text-lg text-zinc-400">{t("helpCenter.heroSubtext")}</p>
             </motion.div>
-
-            {/* Search */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.15 }}
-              className="mt-10"
-            >
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.15 }} className="mt-10">
               <div className="relative">
-                <Search
-                  size={20}
-                  className="absolute left-5 top-1/2 -translate-y-1/2 text-zinc-500"
-                />
-                <input
-                  type="text"
-                  value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                  placeholder="Search for an answer..."
-                  className="w-full rounded-2xl bg-white/5 border border-white/10 pl-14 pr-5 py-4 text-base text-white placeholder-zinc-600 outline-none transition-all duration-300 focus:border-fiper/50 focus:bg-white/[0.07] focus:ring-1 focus:ring-fiper/20"
-                />
-                {query && (
-                  <button
-                    onClick={() => setQuery("")}
-                    className="absolute right-5 top-1/2 -translate-y-1/2 text-xs text-zinc-500 hover:text-white transition-colors"
-                  >
-                    Clear
-                  </button>
-                )}
+                <Search size={20} className="absolute start-5 top-1/2 -translate-y-1/2 text-zinc-500" />
+                <input type="text" value={query} onChange={(e) => setQuery(e.target.value)} placeholder={t("helpCenter.searchPlaceholder")} className="w-full rounded-2xl bg-white/5 border border-white/10 ps-14 pe-5 py-4 text-base text-white placeholder-zinc-600 outline-none transition-all duration-300 focus:border-fiper/50 focus:bg-white/[0.07] focus:ring-1 focus:ring-fiper/20" />
+                {query && <button onClick={() => setQuery("")} className="absolute end-5 top-1/2 -translate-y-1/2 text-xs text-zinc-500 hover:text-white transition-colors">{t("helpCenter.clear")}</button>}
               </div>
-              {query && (
-                <p className="mt-3 text-sm text-zinc-500">
-                  {totalResults} result{totalResults !== 1 ? "s" : ""} found
-                </p>
-              )}
+              {query && <p className="mt-3 text-sm text-zinc-500">{totalResults} {totalResults === 1 ? "result" : "results"}</p>}
             </motion.div>
           </div>
         </section>
 
-        {/* ─── Category Grid (hidden when searching) ─── */}
         {!query && (
           <section className="mx-auto max-w-5xl px-6 mt-16">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.25 }}
-              className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
-            >
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.25 }} className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {categories.map((cat, i) => {
                 const Icon = cat.icon;
                 return (
-                  <motion.a
-                    key={cat.id}
-                    href={`#${cat.id}`}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: 0.05 * i }}
-                    whileHover={{ y: -4, transition: { duration: 0.25 } }}
-                    className="glass card-shine rounded-2xl p-6 flex items-start gap-4 transition-all duration-300 hover:bg-white/[0.04] hover:border-white/20 group"
-                  >
-                    <div className="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-xl bg-fiper/10 group-hover:bg-fiper/15 transition-colors duration-300">
-                      <Icon
-                        size={20}
-                        className="text-fiper"
-                      />
-                    </div>
+                  <motion.a key={cat.id} href={`#${cat.id}`} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.05 * i }} whileHover={{ y: -4, transition: { duration: 0.25 } }} className="glass card-shine rounded-2xl p-6 flex items-start gap-4 transition-all duration-300 hover:bg-white/[0.04] hover:border-white/20 group">
+                    <div className="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-xl bg-fiper/10 group-hover:bg-fiper/15 transition-colors duration-300"><Icon size={20} className="text-fiper" /></div>
                     <div>
-                      <h3 className="text-sm font-semibold text-white">
-                        {cat.title}
-                      </h3>
-                      <p className="text-xs text-zinc-500 mt-1">
-                        {cat.faqs.length} article{cat.faqs.length !== 1 ? "s" : ""}
-                      </p>
+                      <h3 className="text-sm font-semibold text-white">{cat.title}</h3>
+                      <p className="text-xs text-zinc-500 mt-1">{cat.faqs.length} {cat.faqs.length === 1 ? "article" : "articles"}</p>
                     </div>
                   </motion.a>
                 );
@@ -286,91 +142,39 @@ export default function HelpCenter() {
           </section>
         )}
 
-        {/* ─── FAQ Sections ─── */}
         <div className="mx-auto max-w-3xl px-6 mt-20 space-y-16">
-          {filtered.map((cat) => (
-            <CategorySection key={cat.id} category={cat} />
-          ))}
+          {filtered.map((cat) => <CategorySection key={cat.id} category={cat} />)}
           {query && filtered.length === 0 && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="text-center py-16"
-            >
-              <p className="text-zinc-500 text-lg">
-                No results found for "{query}"
-              </p>
-              <p className="text-zinc-600 text-sm mt-2">
-                Try a different search term or browse the categories above.
-              </p>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-16">
+              <p className="text-zinc-500 text-lg">{t("helpCenter.noResults", { query })}</p>
+              <p className="text-zinc-600 text-sm mt-2">{t("helpCenter.noResultsHint")}</p>
             </motion.div>
           )}
         </div>
 
-        {/* ─── Contact Section ─── */}
         <section className="mx-auto max-w-3xl px-6 mt-24">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.7 }}
-          >
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.7 }}>
             <div className="text-center mb-10">
-              <h2
-                className="text-3xl font-semibold sm:text-4xl"
-                style={{ letterSpacing: "-0.03em" }}
-              >
-                Still need <span className="text-gradient-red">help?</span>
+              <h2 className="text-3xl font-semibold sm:text-4xl" style={{ letterSpacing: "-0.03em" }}>
+                {t("helpCenter.contactTitle1")} <span className="text-gradient-red">{t("helpCenter.contactTitle2")}</span>
               </h2>
-              <p className="mt-3 text-zinc-400">
-                Our team is ready to assist you.
-              </p>
+              <p className="mt-3 text-zinc-400">{t("helpCenter.contactSubtext")}</p>
             </div>
-
             <div className="grid gap-5 sm:grid-cols-2">
-              {/* WhatsApp */}
-              <motion.a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ y: -4, transition: { duration: 0.25 } }}
-                className="glass card-shine rounded-2xl p-7 transition-all duration-300 hover:bg-white/[0.04] hover:border-white/20 group block"
-              >
-                <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-[#25D366]/10 mb-5">
-                  <WhatsAppIcon className="w-6 h-6 text-[#25D366]" />
-                </div>
-                <h3 className="text-lg font-semibold text-white mb-2">
-                  Chat with us on WhatsApp
-                </h3>
-                <p className="text-sm text-zinc-400 mb-5">
-                  Get instant help from our support team
-                </p>
+              <motion.a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" whileHover={{ y: -4, transition: { duration: 0.25 } }} className="glass card-shine rounded-2xl p-7 transition-all duration-300 hover:bg-white/[0.04] hover:border-white/20 group block">
+                <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-[#25D366]/10 mb-5"><WhatsAppIcon className="w-6 h-6 text-[#25D366]" /></div>
+                <h3 className="text-lg font-semibold text-white mb-2">{t("helpCenter.whatsappTitle")}</h3>
+                <p className="text-sm text-zinc-400 mb-5">{t("helpCenter.whatsappDesc")}</p>
                 <span className="inline-flex items-center gap-2 text-sm font-medium text-[#25D366] group-hover:gap-3 transition-all duration-300">
-                  Start Chat
-                  <ArrowRight size={14} />
+                  {t("helpCenter.whatsappCta")} <ArrowRight size={14} className="rtl-flip" />
                 </span>
               </motion.a>
-
-              {/* Support Ticket */}
-              <motion.a
-                href="https://crm.fiper.me"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ y: -4, transition: { duration: 0.25 } }}
-                className="glass card-shine rounded-2xl p-7 transition-all duration-300 hover:bg-white/[0.04] hover:border-white/20 group block"
-              >
-                <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-fiper/10 mb-5">
-                  <LifeBuoy size={24} className="text-fiper" />
-                </div>
-                <h3 className="text-lg font-semibold text-white mb-2">
-                  Open a Support Ticket
-                </h3>
-                <p className="text-sm text-zinc-400 mb-5">
-                  For account-specific issues that require investigation
-                </p>
+              <motion.a href="https://crm.fiper.me" target="_blank" rel="noopener noreferrer" whileHover={{ y: -4, transition: { duration: 0.25 } }} className="glass card-shine rounded-2xl p-7 transition-all duration-300 hover:bg-white/[0.04] hover:border-white/20 group block">
+                <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-fiper/10 mb-5"><LifeBuoy size={24} className="text-fiper" /></div>
+                <h3 className="text-lg font-semibold text-white mb-2">{t("helpCenter.ticketTitle")}</h3>
+                <p className="text-sm text-zinc-400 mb-5">{t("helpCenter.ticketDesc")}</p>
                 <span className="inline-flex items-center gap-2 text-sm font-medium text-fiper group-hover:gap-3 transition-all duration-300">
-                  Create Ticket
-                  <ArrowRight size={14} />
+                  {t("helpCenter.ticketCta")} <ArrowRight size={14} className="rtl-flip" />
                 </span>
               </motion.a>
             </div>
@@ -378,38 +182,14 @@ export default function HelpCenter() {
         </section>
       </main>
 
-      {/* ─── Footer ─── */}
       <footer className="border-t border-white/10 bg-black">
         <div className="mx-auto max-w-7xl px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <Link to="/">
-            <img
-              src="/Fiper_Logo_white2.png"
-              alt="Fiper"
-              className="h-14 w-auto object-contain"
-            />
-          </Link>
-          <p className="text-xs text-zinc-600">
-            &copy; 2026 Fiper. All rights reserved.
-          </p>
+          <Link to="/"><img src="/Fiper_Logo_white2.png" alt="Fiper" className="h-14 w-auto object-contain" /></Link>
+          <p className="text-xs text-zinc-600">{t("footer.copyright")}</p>
         </div>
       </footer>
 
-      {/* ─── Floating WhatsApp Button ─── */}
-      <motion.a
-        href={WHATSAPP_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-[90] flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] text-white shadow-lg shadow-[#25D366]/30 hover:shadow-xl hover:shadow-[#25D366]/40 hover:scale-110 transition-all duration-300"
-        animate={{
-          scale: [1, 1.08, 1],
-        }}
-        transition={{
-          duration: 2.5,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        aria-label="Chat on WhatsApp"
-      >
+      <motion.a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="fixed bottom-6 end-6 z-[90] flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] text-white shadow-lg shadow-[#25D366]/30 hover:shadow-xl hover:shadow-[#25D366]/40 hover:scale-110 transition-all duration-300" animate={{ scale: [1, 1.08, 1] }} transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }} aria-label="Chat on WhatsApp">
         <WhatsAppIcon className="w-7 h-7" />
       </motion.a>
     </div>

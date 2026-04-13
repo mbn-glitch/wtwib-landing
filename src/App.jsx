@@ -1,3 +1,4 @@
+import useDirection from "./hooks/useDirection";
 import Navbar from "./components/Navbar";
 import ScrollProgress from "./components/ScrollProgress";
 import Hero from "./components/Hero";
@@ -12,6 +13,8 @@ import FinalCTA from "./components/FinalCTA";
 import Footer from "./components/Footer";
 
 function App() {
+  useDirection();
+
   return (
     <div className="noise-bg relative min-h-screen bg-black text-white">
       <ScrollProgress />

@@ -1,20 +1,23 @@
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-
-const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "Features", href: "#features" },
-  { label: "Cards", href: "#cards" },
-  { label: "How it works", href: "#how-it-works" },
-  { label: "FAQ", href: "#faq" },
-  { label: "Help Center", href: "/help-center", isRoute: true },
-];
+import LanguageSwitcher from "./LanguageSwitcher";
 
 export default function Navbar() {
+  const { t } = useTranslation();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  const navLinks = [
+    { label: t("nav.home"), href: "#home" },
+    { label: t("nav.features"), href: "#features" },
+    { label: t("nav.cards"), href: "#cards" },
+    { label: t("nav.howItWorks"), href: "#how-it-works" },
+    { label: t("nav.faq"), href: "#faq" },
+    { label: t("nav.helpCenter"), href: "/help-center", isRoute: true },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -35,7 +38,6 @@ export default function Navbar() {
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="flex items-center justify-between py-6">
-          {/* Logo */}
           <a href="#home" className="flex-shrink-0">
             <img
               src="/Fiper_Logo_white2.png"
@@ -44,7 +46,6 @@ export default function Navbar() {
             />
           </a>
 
-          {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) =>
               link.isRoute ? (
@@ -67,19 +68,18 @@ export default function Navbar() {
             )}
           </div>
 
-          {/* Desktop CTA */}
-          <div className="hidden lg:block">
+          <div className="hidden lg:flex items-center gap-3">
+            <LanguageSwitcher />
             <a
               href="https://crm.fiper.me"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full bg-fiper px-6 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-fiper-dark hover:shadow-lg hover:shadow-red-500/20"
             >
-              Get Your Card
+              {t("nav.getYourCard")}
             </a>
           </div>
 
-          {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
             className="lg:hidden p-2 text-zinc-400 hover:text-white"
@@ -90,7 +90,6 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
@@ -122,7 +121,8 @@ export default function Navbar() {
                   </a>
                 )
               )}
-              <div className="pt-4">
+              <div className="pt-4 space-y-3">
+                <LanguageSwitcher className="w-full justify-center" />
                 <a
                   href="https://crm.fiper.me"
                   target="_blank"
@@ -130,7 +130,7 @@ export default function Navbar() {
                   onClick={() => setMobileOpen(false)}
                   className="block w-full text-center rounded-full bg-fiper px-6 py-3 text-sm font-semibold text-white"
                 >
-                  Get Your Card
+                  {t("nav.getYourCard")}
                 </a>
               </div>
             </div>
