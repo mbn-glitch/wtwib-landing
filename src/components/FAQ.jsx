@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 
 const faqs = [
   {
@@ -149,6 +151,25 @@ export default function FAQ() {
             />
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.7, delay: 0.3 }}
+          className="mt-12 text-center"
+        >
+          <Link
+            to="/help-center"
+            className="group inline-flex items-center gap-2 text-sm font-medium text-fiper hover:text-red-400 transition-colors duration-300"
+          >
+            View All FAQs
+            <ArrowRight
+              size={14}
+              className="transition-transform group-hover:translate-x-1"
+            />
+          </Link>
+        </motion.div>
       </div>
     </section>
   );

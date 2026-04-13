@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
@@ -8,6 +9,7 @@ const navLinks = [
   { label: "Cards", href: "#cards" },
   { label: "How it works", href: "#how-it-works" },
   { label: "FAQ", href: "#faq" },
+  { label: "Help Center", href: "/help-center", isRoute: true },
 ];
 
 export default function Navbar() {
@@ -44,15 +46,25 @@ export default function Navbar() {
 
           {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="px-4 py-2 text-sm text-zinc-400 transition-colors duration-200 hover:text-white rounded-lg hover:bg-white/5"
-              >
-                {link.label}
-              </a>
-            ))}
+            {navLinks.map((link) =>
+              link.isRoute ? (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  className="px-4 py-2 text-sm text-zinc-400 transition-colors duration-200 hover:text-white rounded-lg hover:bg-white/5"
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="px-4 py-2 text-sm text-zinc-400 transition-colors duration-200 hover:text-white rounded-lg hover:bg-white/5"
+                >
+                  {link.label}
+                </a>
+              )
+            )}
           </div>
 
           {/* Desktop CTA */}
@@ -89,16 +101,27 @@ export default function Navbar() {
             className="lg:hidden bg-black/95 backdrop-blur-2xl border-b border-white/10"
           >
             <div className="px-6 py-6 space-y-1">
-              {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="block px-4 py-3 text-base text-zinc-400 hover:text-white rounded-lg hover:bg-white/5 transition-colors"
-                >
-                  {link.label}
-                </a>
-              ))}
+              {navLinks.map((link) =>
+                link.isRoute ? (
+                  <Link
+                    key={link.href}
+                    to={link.href}
+                    onClick={() => setMobileOpen(false)}
+                    className="block px-4 py-3 text-base text-zinc-400 hover:text-white rounded-lg hover:bg-white/5 transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                ) : (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setMobileOpen(false)}
+                    className="block px-4 py-3 text-base text-zinc-400 hover:text-white rounded-lg hover:bg-white/5 transition-colors"
+                  >
+                    {link.label}
+                  </a>
+                )
+              )}
               <div className="pt-4">
                 <a
                   href="https://crm.fiper.me"

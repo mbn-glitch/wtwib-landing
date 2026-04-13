@@ -1,9 +1,11 @@
+import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 
 const productLinks = [
   { label: "Features", href: "#features" },
   { label: "Cards", href: "#cards" },
   { label: "FAQ", href: "#faq" },
+  { label: "Help Center", href: "/help-center", isRoute: true },
   { label: "Get Started", href: "#cards" },
 ];
 
@@ -114,12 +116,21 @@ export default function Footer() {
             <ul className="space-y-3">
               {productLinks.map((link) => (
                 <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="text-sm text-zinc-500 transition-colors duration-200 hover:text-white"
-                  >
-                    {link.label}
-                  </a>
+                  {link.isRoute ? (
+                    <Link
+                      to={link.href}
+                      className="text-sm text-zinc-500 transition-colors duration-200 hover:text-white"
+                    >
+                      {link.label}
+                    </Link>
+                  ) : (
+                    <a
+                      href={link.href}
+                      className="text-sm text-zinc-500 transition-colors duration-200 hover:text-white"
+                    >
+                      {link.label}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
