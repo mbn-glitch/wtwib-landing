@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm create:*)",
+      "Bash(npm install:*)",
+      "Bash(npx vite:*)",
+      "Bash(pip install:*)",
+      "Bash(npx --yes pdf-parse)",
+      "Bash(npm list:*)",
+      "Bash(curl -s http://localhost:5173)",
+      "Bash(pkill -f \"vite\")",
+      "Bash(npx kill-port:*)",
+      "Bash(node:*)",
+      "Bash(git --version)",
+      "Bash(gh --version)",
+      "Bash(git config:*)",
+      "Bash(git init:*)",
+      "Bash(git branch:*)",
+      "Bash(git add:*)"
+    ]
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "magic"
+  ]
+}
