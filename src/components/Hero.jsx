@@ -56,7 +56,7 @@ export default function Hero() {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex flex-col items-center justify-center overflow-x-hidden overflow-y-visible pt-20">
+    <section id="home" className="relative min-h-screen flex flex-col items-center justify-center overflow-x-hidden overflow-y-visible pt-36 sm:pt-32 md:pt-28 lg:pt-24">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-red-600/10 blur-[120px]" />
         <div className="absolute bottom-0 left-1/4 w-[600px] h-[600px] rounded-full bg-red-900/5 blur-[120px]" />
@@ -64,10 +64,10 @@ export default function Hero() {
       </div>
 
       <motion.div variants={container} initial="hidden" animate="show" className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 text-center">
-        <motion.div variants={fadeUp} className="mb-8">
-          <span className="inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/5 px-5 py-2 text-xs font-medium text-zinc-400">
-            <Globe size={14} className="text-fiper animate-pulse" />
-            {t("hero.badge")}
+        <motion.div variants={fadeUp} className="mt-6 sm:mt-0 mb-8 flex justify-center">
+          <span className="inline-flex items-center gap-2 sm:gap-2.5 rounded-full border border-white/10 bg-white/5 px-4 sm:px-5 py-1.5 sm:py-2 text-[11px] sm:text-xs font-medium text-zinc-400 text-center max-w-[90vw]">
+            <Globe size={12} className="text-fiper animate-pulse shrink-0 sm:size-3.5" />
+            <span className="truncate sm:whitespace-normal">{t("hero.badge")}</span>
           </span>
         </motion.div>
 
