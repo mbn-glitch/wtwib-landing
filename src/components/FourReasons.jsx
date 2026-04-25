@@ -14,7 +14,7 @@ export default function FourReasons() {
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-fiper mb-4">{t("fourReasons.label")}</p>
           <h2 className="text-4xl font-semibold leading-[1.05] sm:text-5xl md:text-6xl lg:text-7xl" style={{ letterSpacing: "-0.04em" }}>
             {t("fourReasons.heading1")}
-            <span className="text-zinc-500"> {t("fourReasons.heading2")}</span>
+            <span className="text-zinc-400"> {t("fourReasons.heading2")}</span>
           </h2>
         </motion.div>
         <div className="grid gap-5 sm:grid-cols-2 max-w-5xl mx-auto">

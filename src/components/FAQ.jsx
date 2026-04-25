@@ -45,7 +45,7 @@ export default function FAQ() {
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-fiper mb-4">{t("faq.label")}</p>
           <h2 className="text-4xl font-semibold leading-[1.05] sm:text-5xl md:text-6xl lg:text-7xl" style={{ letterSpacing: "-0.04em" }}>
             {t("faq.heading1")}
-            <span className="text-zinc-500"> {t("faq.heading2")}</span>
+            <span className="text-zinc-400"> {t("faq.heading2")}</span>
           </h2>
           <p className="mt-4 text-base text-zinc-500">{t("faq.subtext")}</p>
         </motion.div>

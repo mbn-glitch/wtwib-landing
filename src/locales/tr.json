@@ -19,8 +19,8 @@
     "cta2": "Kartları karşılaştır",
     "stat1Value": "5 dk",
     "stat1Label": "Sanal aktivasyon",
-    "stat2Value": "Anında",
-    "stat2Label": "DONDUR — İstediğiniz Zaman Dondurun",
+    "stat2Value": "Tek dokunuş",
+    "stat2Label": "Kart Dondurma",
     "stat3Value": "$0",
     "stat3Label": "Gizli ücret",
     "stat4Value": "Küresel",
@@ -43,8 +43,8 @@
     "f4Desc": "Sanal Kartınızı telefon cüzdanınıza ekleyin ve tek dokunuşla anında ödeyin.",
     "f5Title": "Şeffaf Ücretler",
     "f5Desc": "%1.7 yükleme ücreti, işlem başına $0.40. Asla sürpriz yok.",
-    "f6Title": "İstediğiniz Zaman Dondurun",
-    "f6Desc": "Kartınızı kontrol panelinizden tek tıkla anında kilitleyin ve kilidini açın."
+    "f6Title": "Tam Kart Kontrolü",
+    "f6Desc": "Kartınızı kilitleyin, kilidini açın ve tek bir panelden her yönüyle yönetin. Kontrol her zaman sizde."
   },
   "chooseCard": {
     "label": "Kartınızı Seçin",
@@ -56,8 +56,8 @@
     "virtualBadge": "Günlük kullanım ve Apple Pay için ideal",
     "physicalBadge": "Seyahat ve ATM çekimleri için ideal",
     "oneTimeFee": "Tek seferlik düzenleme ücreti",
-    "virtualCta": "Kartınızı anında etkinleştirin",
-    "physicalCta": "Küresel kullanım için kartınızı alın",
+    "virtualCta": "Fiper Kartınızı Alın",
+    "physicalCta": "Fiper Kartınızı Alın",
     "vf1": "5 dakikada aktivasyon",
     "vf2": "Apple Pay destekli",
     "vf3": "Google Pay destekli",
@@ -95,7 +95,7 @@
     "step2Desc": "Sanal veya Fiziksel arasında seçim yapın, tek seferlik düzenleme ücretini ödeyin, hazırsınız.",
     "step3Title": "Hemen harcamaya başlayın",
     "step3Desc": "Sanal Kartınızı çevrimiçi anında kullanın veya Fiziksel Kartınızın gelmesini bekleyin ve dünya çapında çekim yapın.",
-    "cta": "Bugün Başlayın"
+    "cta": "Fiper Kartınızı Alın"
   },
   "trustSecurity": {
     "label": "Güven ve Güvenlik",
@@ -122,7 +122,7 @@
     "r3Desc": "Sanal Kartınızı telefon cüzdanınıza anında ekleyin. Dünyanın her yerinde tek dokunuşla ödeyin — kârlarınız artık tam anlamıyla cebinizde.",
     "r4Title": "Aylık Ücret Yok — Asla",
     "r4Desc": "Kartınızı düzenlemek için bir kez ödeyin. Aylık ücret yok, gizli ücret yok, abonelik yok. Sadece %1.7 yükleme ve işlem başına $0.40 — tamamen şeffaf.",
-    "cta": "Fiper Kartınızı Hemen Alın"
+    "cta": "Fiper Kartınızı Alın"
   },
   "faq": {
     "label": "SSS",
@@ -147,7 +147,7 @@
     "heading1": "Trade edin. Çekin.",
     "heading2": "Keyfini çıkarın.",
     "subtext": "Kârlarınız artık sadece ekrandaki sayılar değil. Fiper Kart ile gerçek satın alma gücüne dönüşürler — sadece dakikalar içinde.",
-    "cta": "Fiper Kartınızı şimdi alın"
+    "cta": "Fiper Kartınızı Alın"
   },
   "footer": {
     "tagline": "Trading kârlarını gerçek dünya satın alma gücüne dönüştürün.",

@@ -19,8 +19,8 @@
     "cta2": "Comparar cartões",
     "stat1Value": "5 min",
     "stat1Label": "Ativação virtual",
-    "stat2Value": "Instantâneo",
-    "stat2Label": "CONGELAR — Congele quando quiser",
+    "stat2Value": "1 toque",
+    "stat2Label": "Congelamento do cartão",
     "stat3Value": "$0",
     "stat3Label": "Taxas ocultas",
     "stat4Value": "Global",
@@ -43,8 +43,8 @@
     "f4Desc": "Adicione seu Cartão Virtual à carteira do seu celular e pague instantaneamente com um toque.",
     "f5Title": "Taxas transparentes",
     "f5Desc": "Taxa de recarga de 1,7%, $0,40 por transação. Sem surpresas.",
-    "f6Title": "Congele quando quiser",
-    "f6Desc": "Bloqueie e desbloqueie seu cartão instantaneamente pelo seu painel de controle com um único clique."
+    "f6Title": "Controle total do cartão",
+    "f6Desc": "Bloqueie, desbloqueie e gerencie cada aspecto do seu cartão a partir de um único painel. Você está sempre no controle."
   },
   "chooseCard": {
     "label": "Escolha seu cartão",
@@ -56,8 +56,8 @@
     "virtualBadge": "Ideal para uso diário e Apple Pay",
     "physicalBadge": "Ideal para viagens e saques em ATM",
     "oneTimeFee": "Taxa de emissão única",
-    "virtualCta": "Ative seu cartão instantaneamente",
-    "physicalCta": "Pegue seu cartão para uso global",
+    "virtualCta": "Pegue seu Fiper Card",
+    "physicalCta": "Pegue seu Fiper Card",
     "vf1": "Ativação em 5 minutos",
     "vf2": "Compatível com Apple Pay",
     "vf3": "Compatível com Google Pay",
@@ -95,7 +95,7 @@
     "step2Desc": "Escolha entre Virtual ou Físico, pague a taxa de emissão única e pronto.",
     "step3Title": "Comece a gastar imediatamente",
     "step3Desc": "Use seu Cartão Virtual instantaneamente online ou aguarde a chegada do seu Cartão Físico e saque em todo o mundo.",
-    "cta": "Comece hoje"
+    "cta": "Pegue seu Fiper Card"
   },
   "trustSecurity": {
     "label": "Confiança e Segurança",
@@ -122,7 +122,7 @@
     "r3Desc": "Adicione seu Cartão Virtual à carteira do seu celular instantaneamente. Pague com um toque em qualquer lugar do mundo — seus lucros, agora literalmente no seu bolso.",
     "r4Title": "Sem taxas mensais — Nunca",
     "r4Desc": "Pague uma vez para emitir seu cartão. Sem cobranças mensais, sem taxas ocultas, sem assinaturas. Apenas 1,7% de recarga e $0,40 por transação — totalmente transparente.",
-    "cta": "Pegue seu Fiper Card agora"
+    "cta": "Pegue seu Fiper Card"
   },
   "faq": {
     "label": "Perguntas frequentes",
@@ -147,7 +147,7 @@
     "heading1": "Opere. Saque.",
     "heading2": "Aproveite.",
     "subtext": "Seus lucros não são mais apenas números em uma tela. Com o Fiper Card, eles se tornam poder de compra real — em apenas minutos.",
-    "cta": "Pegue seu Fiper Card agora"
+    "cta": "Pegue seu Fiper Card"
   },
   "footer": {
     "tagline": "Transforme os lucros de trading em poder de compra real.",

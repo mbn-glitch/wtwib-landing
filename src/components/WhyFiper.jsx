@@ -23,7 +23,7 @@ export default function WhyFiper() {
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-fiper mb-4">{t("whyFiper.label")}</p>
           <h2 className="text-4xl font-semibold leading-[1.05] sm:text-5xl md:text-6xl lg:text-7xl" style={{ letterSpacing: "-0.04em" }}>
             {t("whyFiper.heading1")}
-            <span className="text-zinc-500"> {t("whyFiper.heading2")}</span>
+            <span className="text-zinc-400"> {t("whyFiper.heading2")}</span>
           </h2>
         </motion.div>
 

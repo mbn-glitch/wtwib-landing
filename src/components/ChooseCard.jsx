@@ -6,6 +6,11 @@ import FiperCard3D from "./FiperCard3D";
 export default function ChooseCard() {
   const { t } = useTranslation();
 
+  // ⚠️ PRICING SOURCE OF TRUTH WARNING
+  // These prices ($30 Virtual / $50 Physical) MUST match the answers in
+  // src/locales/*.json under helpCenter.vp_a1. As of last audit, the
+  // Help Center showed $50/$100 — that needs to be reconciled with the
+  // CRM and legal team. DO NOT change one side without updating both.
   const plans = [
     {
       name: t("chooseCard.virtualCard"),
@@ -63,7 +68,7 @@ export default function ChooseCard() {
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-fiper mb-4">{t("chooseCard.label")}</p>
           <h2 className="text-4xl font-semibold leading-[1.05] sm:text-5xl md:text-6xl lg:text-7xl" style={{ letterSpacing: "-0.04em" }}>
             {t("chooseCard.heading1")}
-            <span className="text-zinc-500"> {t("chooseCard.heading2")}</span>
+            <span className="text-zinc-400"> {t("chooseCard.heading2")}</span>
           </h2>
         </motion.div>
 

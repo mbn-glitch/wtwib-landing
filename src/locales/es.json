@@ -19,8 +19,8 @@
     "cta2": "Comparar tarjetas",
     "stat1Value": "5 min",
     "stat1Label": "Activación virtual",
-    "stat2Value": "Instantáneo",
-    "stat2Label": "CONGELAR — Congela cuando quieras",
+    "stat2Value": "1 toque",
+    "stat2Label": "Congelación de tarjeta",
     "stat3Value": "$0",
     "stat3Label": "Comisiones ocultas",
     "stat4Value": "Global",
@@ -43,8 +43,8 @@
     "f4Desc": "Añade tu Tarjeta Virtual a la billetera de tu teléfono y paga al instante con un toque.",
     "f5Title": "Comisiones transparentes",
     "f5Desc": "Comisión de recarga del 1,7%, $0,40 por transacción. Sin sorpresas.",
-    "f6Title": "Congela cuando quieras",
-    "f6Desc": "Bloquea y desbloquea tu tarjeta al instante desde tu panel de control con un solo clic."
+    "f6Title": "Control total de la tarjeta",
+    "f6Desc": "Bloquea, desbloquea y gestiona cada aspecto de tu tarjeta desde un solo panel. Siempre tienes el control."
   },
   "chooseCard": {
     "label": "Elige tu tarjeta",
@@ -56,8 +56,8 @@
     "virtualBadge": "Ideal para uso diario y Apple Pay",
     "physicalBadge": "Ideal para viajes y retiros en cajeros",
     "oneTimeFee": "Comisión de emisión única",
-    "virtualCta": "Activa tu tarjeta al instante",
-    "physicalCta": "Obtén tu tarjeta para uso global",
+    "virtualCta": "Obtén tu Fiper Card",
+    "physicalCta": "Obtén tu Fiper Card",
     "vf1": "Activación en 5 minutos",
     "vf2": "Compatible con Apple Pay",
     "vf3": "Compatible con Google Pay",
@@ -95,7 +95,7 @@
     "step2Desc": "Elige entre Virtual o Física, paga la comisión de emisión única, y listo.",
     "step3Title": "Empieza a gastar de inmediato",
     "step3Desc": "Usa tu Tarjeta Virtual al instante en línea, o espera la llegada de tu Tarjeta Física y retira en todo el mundo.",
-    "cta": "Empieza hoy mismo"
+    "cta": "Obtén tu Fiper Card"
   },
   "trustSecurity": {
     "label": "Confianza y Seguridad",
@@ -122,7 +122,7 @@
     "r3Desc": "Añade tu Tarjeta Virtual a la billetera de tu teléfono al instante. Paga con un toque en cualquier parte del mundo — tus ganancias, ahora literalmente en tu bolsillo.",
     "r4Title": "Sin comisiones mensuales — Nunca",
     "r4Desc": "Paga una vez para emitir tu tarjeta. Sin cargos mensuales, sin comisiones ocultas, sin suscripciones. Solo 1,7% de recarga y $0,40 por transacción — totalmente transparente.",
-    "cta": "Obtén tu Fiper Card ahora"
+    "cta": "Obtén tu Fiper Card"
   },
   "faq": {
     "label": "Preguntas frecuentes",
@@ -147,7 +147,7 @@
     "heading1": "Opera. Retira.",
     "heading2": "Disfruta.",
     "subtext": "Tus ganancias ya no son solo números en una pantalla. Con la Fiper Card, se convierten en poder adquisitivo real — en solo minutos.",
-    "cta": "Obtén tu Fiper Card ahora"
+    "cta": "Obtén tu Fiper Card"
   },
   "footer": {
     "tagline": "Convierte las ganancias de trading en poder adquisitivo real.",

@@ -13,8 +13,8 @@ const platforms = [
 function PlatformItem({ platform }) {
   return (
     <span className="flex items-center gap-2.5 text-zinc-500 transition-all duration-300 hover:text-white group cursor-default whitespace-nowrap">
-      <span className="opacity-40 group-hover:opacity-100 transition-opacity duration-300 grayscale group-hover:grayscale-0 group-hover:text-fiper">{platform.svg}</span>
-      <span className="text-sm font-medium tracking-wide opacity-60 group-hover:opacity-100 transition-opacity duration-300">{platform.name}</span>
+      <span className="opacity-70 group-hover:opacity-100 transition-opacity duration-300 grayscale group-hover:grayscale-0 group-hover:text-fiper">{platform.svg}</span>
+      <span className="text-sm font-medium tracking-wide opacity-80 group-hover:opacity-100 transition-opacity duration-300">{platform.name}</span>
     </span>
   );
 }
@@ -26,7 +26,7 @@ export default function TrustStrip() {
   return (
     <section className="relative border-t border-white/5 border-b border-b-white/5 py-16">
       <motion.div initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.7 }} className="mx-auto max-w-7xl px-6 lg:px-8">
-        <p className="text-center text-xs font-medium uppercase tracking-[0.25em] text-zinc-600 mb-8">{t("trustStrip.title")}</p>
+        <p className="text-center text-xs font-medium uppercase tracking-[0.25em] text-zinc-400 mb-8">{t("trustStrip.title")}</p>
         <div className="hidden md:flex justify-center">
           <div className="flex items-center gap-8">
             {platforms.map((p, i) => (

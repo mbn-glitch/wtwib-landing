@@ -15,12 +15,12 @@
     "headline3": "in Minutes",
     "headlineInto": "into",
     "subtext": "Most traders can't easily use their profits. We fixed that.",
-    "cta1": "Get your card in 5 minutes",
+    "cta1": "Get Your Card in 5 Minutes",
     "cta2": "Compare cards",
     "stat1Value": "5 min",
     "stat1Label": "Virtual activation",
-    "stat2Value": "Instant",
-    "stat2Label": "FREEZE — Freeze Anytime",
+    "stat2Value": "1-tap",
+    "stat2Label": "Card Freeze",
     "stat3Value": "$0",
     "stat3Label": "Hidden fees",
     "stat4Value": "Global",
@@ -43,8 +43,8 @@
     "f4Desc": "Add your Virtual Card to your phone wallet and pay instantly with a tap.",
     "f5Title": "Transparent Fees",
     "f5Desc": "1.7% top-up fee, $0.40 per transaction. No surprises ever.",
-    "f6Title": "Freeze Anytime",
-    "f6Desc": "Instantly lock and unlock your card from your dashboard with a single click."
+    "f6Title": "Total Card Control",
+    "f6Desc": "Lock, unlock, and manage every aspect of your card from a single dashboard. You're always in control."
   },
   "chooseCard": {
     "label": "Choose Your Card",
@@ -56,8 +56,8 @@
     "virtualBadge": "Best for daily use & Apple Pay",
     "physicalBadge": "Best for travel & ATM withdrawals",
     "oneTimeFee": "One-time issuing fee",
-    "virtualCta": "Activate your card instantly",
-    "physicalCta": "Get your card for global use",
+    "virtualCta": "Get Your Fiper Card",
+    "physicalCta": "Get Your Fiper Card",
     "vf1": "Activation in 5 minutes",
     "vf2": "Apple Pay supported",
     "vf3": "Google Pay supported",
@@ -95,7 +95,7 @@
     "step2Desc": "Choose between Virtual or Physical, pay the one-time issuing fee, and you're set.",
     "step3Title": "Start spending immediately",
     "step3Desc": "Use your Virtual Card instantly online, or wait for your Physical Card to arrive and withdraw worldwide.",
-    "cta": "Get Started Today"
+    "cta": "Get Your Fiper Card"
   },
   "trustSecurity": {
     "label": "Trust & Security",
@@ -122,7 +122,7 @@
     "r3Desc": "Add your Virtual Card to your phone wallet instantly. Pay with a tap anywhere in the world — your profits, now literally in your pocket.",
     "r4Title": "No Monthly Fees — Ever",
     "r4Desc": "Pay once to issue your card. No monthly charges, no hidden fees, no subscriptions. Just 1.7% top-up and $0.40 per transaction — fully transparent.",
-    "cta": "Get Your Fiper Card Now"
+    "cta": "Get Your Fiper Card"
   },
   "faq": {
     "label": "FAQ",
@@ -147,7 +147,7 @@
     "heading1": "Trade. Withdraw.",
     "heading2": "Enjoy.",
     "subtext": "Your profits are no longer just numbers on a screen. With the Fiper Card, they become real purchasing power — in just minutes.",
-    "cta": "Get your Fiper Card now"
+    "cta": "Get Your Fiper Card"
   },
   "footer": {
     "tagline": "Turn trading profits into real-world purchasing power.",

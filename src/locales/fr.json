@@ -19,8 +19,8 @@
     "cta2": "Comparer les cartes",
     "stat1Value": "5 min",
     "stat1Label": "Activation virtuelle",
-    "stat2Value": "Instantané",
-    "stat2Label": "GEL — Gelez à tout moment",
+    "stat2Value": "1 clic",
+    "stat2Label": "Gel de carte",
     "stat3Value": "$0",
     "stat3Label": "Frais cachés",
     "stat4Value": "Mondial",
@@ -43,8 +43,8 @@
     "f4Desc": "Ajoutez votre Carte Virtuelle au portefeuille de votre téléphone et payez instantanément d'un simple geste.",
     "f5Title": "Frais transparents",
     "f5Desc": "Frais de recharge de 1,7%, $0,40 par transaction. Jamais de surprises.",
-    "f6Title": "Gelez à tout moment",
-    "f6Desc": "Verrouillez et déverrouillez instantanément votre carte depuis votre tableau de bord en un clic."
+    "f6Title": "Contrôle total de la carte",
+    "f6Desc": "Verrouillez, déverrouillez et gérez chaque aspect de votre carte depuis un seul tableau de bord. Vous gardez toujours le contrôle."
   },
   "chooseCard": {
     "label": "Choisissez votre carte",
@@ -56,8 +56,8 @@
     "virtualBadge": "Idéale pour l'usage quotidien et Apple Pay",
     "physicalBadge": "Idéale pour voyager et retirer aux DAB",
     "oneTimeFee": "Frais d'émission uniques",
-    "virtualCta": "Activez votre carte instantanément",
-    "physicalCta": "Obtenez votre carte pour un usage mondial",
+    "virtualCta": "Obtenez votre Fiper Card",
+    "physicalCta": "Obtenez votre Fiper Card",
     "vf1": "Activation en 5 minutes",
     "vf2": "Apple Pay pris en charge",
     "vf3": "Google Pay pris en charge",
@@ -95,7 +95,7 @@
     "step2Desc": "Choisissez entre Virtuelle ou Physique, payez les frais d'émission uniques, et c'est fait.",
     "step3Title": "Commencez à dépenser immédiatement",
     "step3Desc": "Utilisez votre Carte Virtuelle instantanément en ligne, ou attendez l'arrivée de votre Carte Physique et retirez dans le monde entier.",
-    "cta": "Commencez aujourd'hui"
+    "cta": "Obtenez votre Fiper Card"
   },
   "trustSecurity": {
     "label": "Confiance et Sécurité",
@@ -122,7 +122,7 @@
     "r3Desc": "Ajoutez votre Carte Virtuelle au portefeuille de votre téléphone instantanément. Payez d'un simple geste partout dans le monde — vos bénéfices, désormais littéralement dans votre poche.",
     "r4Title": "Aucun frais mensuel — Jamais",
     "r4Desc": "Payez une seule fois pour émettre votre carte. Aucun frais mensuel, aucun frais caché, aucun abonnement. Juste 1,7% de recharge et $0,40 par transaction — entièrement transparent.",
-    "cta": "Obtenez votre Fiper Card maintenant"
+    "cta": "Obtenez votre Fiper Card"
   },
   "faq": {
     "label": "FAQ",
@@ -147,7 +147,7 @@
     "heading1": "Tradez. Retirez.",
     "heading2": "Profitez.",
     "subtext": "Vos bénéfices ne sont plus seulement des chiffres sur un écran. Avec la Fiper Card, ils deviennent un véritable pouvoir d'achat — en quelques minutes.",
-    "cta": "Obtenez votre Fiper Card maintenant"
+    "cta": "Obtenez votre Fiper Card"
   },
   "footer": {
     "tagline": "Transformez les bénéfices de trading en pouvoir d'achat réel.",
