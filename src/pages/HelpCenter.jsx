@@ -6,8 +6,9 @@ import { Search, ArrowRight, LifeBuoy, ArrowLeft } from "lucide-react";
 import { getCategories } from "../data/helpCenterData";
 import useDirection from "../hooks/useDirection";
 import LanguageSwitcher from "../components/LanguageSwitcher";
+import WhatsAppButton from "../components/WhatsAppButton";
 
-const WHATSAPP_URL = "https://wa.me/97433600905?text=Hello%2C%20I%20need%20help%20with%20my%20Fiper%20Card";
+const WHATSAPP_URL = "https://wa.me/971561111855?text=Hello%2C%20I%20need%20help%20with%20my%20Fiper%20Card";
 
 function WhatsAppIcon({ className = "w-6 h-6" }) {
   return (
@@ -189,9 +190,7 @@ export default function HelpCenter() {
         </div>
       </footer>
 
-      <motion.a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="fixed bottom-6 end-6 z-[90] flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] text-white shadow-lg shadow-[#25D366]/30 hover:shadow-xl hover:shadow-[#25D366]/40 hover:scale-110 transition-all duration-300" animate={{ scale: [1, 1.08, 1] }} transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }} aria-label="Chat on WhatsApp">
-        <WhatsAppIcon className="w-7 h-7" />
-      </motion.a>
+      <WhatsAppButton />
     </div>
   );
 }

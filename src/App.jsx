@@ -1,6 +1,7 @@
 import useDirection from "./hooks/useDirection";
 import Navbar from "./components/Navbar";
 import ScrollProgress from "./components/ScrollProgress";
+import WhatsAppButton from "./components/WhatsAppButton";
 import Hero from "./components/Hero";
 import TrustStrip from "./components/TrustStrip";
 import WhyFiper from "./components/WhyFiper";
@@ -31,6 +32,7 @@ function App() {
         <div className="cv-auto"><FinalCTA /></div>
       </main>
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 }
