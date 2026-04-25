@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { motion, AnimatePresence } from "framer-motion";
 import { Globe, Check } from "lucide-react";
-import { LANGUAGES } from "../i18n";
+import { LANGUAGES, changeLanguageSafely } from "../i18n";
 
 export default function LanguageSwitcher({ className = "" }) {
   const { i18n } = useTranslation();
@@ -19,9 +19,9 @@ export default function LanguageSwitcher({ className = "" }) {
     return () => document.removeEventListener("mousedown", onClick);
   }, [open]);
 
-  const select = (code) => {
-    i18n.changeLanguage(code);
+  const select = async (code) => {
     setOpen(false);
+    await changeLanguageSafely(code);
   };
 
   return (

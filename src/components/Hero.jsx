@@ -97,7 +97,7 @@ export default function Hero() {
         <motion.div variants={fadeUp} className="mt-12 flex justify-center lg:mt-14">
           <div className="relative">
             <motion.div
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full pointer-events-none gpu-layer"
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full pointer-events-none gpu-layer hero-glow-pulse"
               style={{ background: "radial-gradient(circle, rgba(220,38,38,0.25) 0%, rgba(220,38,38,0.08) 40%, transparent 70%)" }}
               initial={{ scale: 1, opacity: 0.6 }}
               whileInView={{ scale: [1, 1.15, 1], opacity: [0.6, 1, 0.6] }}

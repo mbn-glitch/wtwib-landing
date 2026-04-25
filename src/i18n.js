@@ -29,7 +29,6 @@ i18n
     react: { useSuspense: false },
   });
 
-/* Lazy-load a locale on first request, then never reload it. */
 const loaded = new Set(["en"]);
 
 async function ensureLoaded(lng) {
@@ -39,15 +38,22 @@ async function ensureLoaded(lng) {
   loaded.add(lng);
 }
 
-/* Load the detected language if it's not English. */
-if (i18n.language && i18n.language !== "en") {
-  ensureLoaded(i18n.language);
+/* Public API: load the bundle FIRST, then switch the language.
+   This guarantees React re-renders with translated strings, not stale ones. */
+export async function changeLanguageSafely(lng) {
+  if (lng === i18n.language) return;
+  await ensureLoaded(lng);
+  await i18n.changeLanguage(lng);
 }
 
-/* Hook language-change events to fetch the bundle just in time. */
-i18n.on("languageChanged", (lng) => {
-  ensureLoaded(lng);
-});
+/* Load the detected language at startup if it's not English.
+   We don't await here because startup shouldn't block — fallback to English. */
+if (i18n.language && i18n.language !== "en") {
+  ensureLoaded(i18n.language).then(() => {
+    /* Force re-render after async load by re-emitting languageChanged */
+    i18n.emit("languageChanged", i18n.language);
+  });
+}
 
 export default i18n;
 

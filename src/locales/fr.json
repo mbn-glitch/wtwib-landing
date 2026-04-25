@@ -80,13 +80,11 @@
     "topUp": "Recharge",
     "transaction": "Transaction",
     "declined": "Refusée",
-    "reverse": "Inversion",
     "fxRate": "Taux de change",
     "delivery": "Livraison",
     "topUpVal": "1,7%",
     "transactionVal": "$0,30–$0,40",
     "declinedVal": "$0,50",
-    "reverseVal": "Selon la devise",
     "fxRateVal": "Par l'émetteur de la carte",
     "deliveryVal": "1 à 2 semaines",
     "footnote": "Tous les frais d'émission sont uniques et non remboursables."

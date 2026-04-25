@@ -80,13 +80,11 @@
     "topUp": "Recarga",
     "transaction": "Transação",
     "declined": "Recusada",
-    "reverse": "Estorno",
     "fxRate": "Taxa de câmbio",
     "delivery": "Entrega",
     "topUpVal": "1,7%",
     "transactionVal": "$0,30–$0,40",
     "declinedVal": "$0,50",
-    "reverseVal": "Depende da moeda",
     "fxRateVal": "Pelo emissor do cartão",
     "deliveryVal": "1-2 semanas",
     "footnote": "Todas as taxas de emissão são únicas e não reembolsáveis."

@@ -13,6 +13,18 @@ body {
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* iOS Safari: use native momentum scrolling, disable CSS smooth scroll on touch
+   (CSS smooth fights iOS momentum scrolling and causes jerkiness) */
+@media (hover: none) and (pointer: coarse) {
+  html {
+    scroll-behavior: auto;
+  }
+  body {
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
 body {
@@ -125,6 +137,16 @@ img[src*="Fiper_Logo"] {
   .glass-strong {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+  }
+}
+
+/* iOS Safari: disable the heavy radial glow pulse on touch devices.
+   It's the most expensive GPU element on the page. */
+@media (hover: none) and (pointer: coarse) {
+  .hero-glow-pulse {
+    animation: none !important;
+    opacity: 0.7 !important;
+    transform: translate(-50%, -50%) scale(1) !important;
   }
 }
 

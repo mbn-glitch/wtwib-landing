@@ -80,13 +80,11 @@
     "topUp": "Bakiye Yükleme",
     "transaction": "İşlem",
     "declined": "Reddedilen",
-    "reverse": "İade",
     "fxRate": "Döviz Kuru",
     "delivery": "Teslimat",
     "topUpVal": "%1.7",
     "transactionVal": "$0.30–$0.40",
     "declinedVal": "$0.50",
-    "reverseVal": "Para birimine bağlı",
     "fxRateVal": "Kart ihraççısına göre",
     "deliveryVal": "1-2 hafta",
     "footnote": "Tüm düzenleme ücretleri tek seferliktir ve iade edilemez."

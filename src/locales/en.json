@@ -80,13 +80,11 @@
     "topUp": "Top up",
     "transaction": "Transaction",
     "declined": "Declined",
-    "reverse": "Reverse",
     "fxRate": "FX Rate",
     "delivery": "Delivery",
     "topUpVal": "1.7%",
     "transactionVal": "$0.30–$0.40",
     "declinedVal": "$0.50",
-    "reverseVal": "Depends on currency",
     "fxRateVal": "By card issuer",
     "deliveryVal": "1–2 weeks",
     "footnote": "All issuing fees are one-time and non-refundable."

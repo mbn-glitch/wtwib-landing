@@ -80,13 +80,11 @@
     "topUp": "شحن الرصيد",
     "transaction": "المعاملة",
     "declined": "معاملة مرفوضة",
-    "reverse": "تحويل عكسي",
     "fxRate": "سعر الصرف",
     "delivery": "التوصيل",
     "topUpVal": "1.7%",
     "transactionVal": "$0.30–$0.40",
     "declinedVal": "$0.50",
-    "reverseVal": "حسب العملة",
     "fxRateVal": "حسب جهة الإصدار",
     "deliveryVal": "1-2 أسبوع",
     "footnote": "جميع رسوم الإصدار لمرة واحدة وغير قابلة للاسترداد."
