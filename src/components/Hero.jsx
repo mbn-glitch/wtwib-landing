@@ -49,10 +49,10 @@ export default function Hero() {
   ];
 
   const badgePositions = {
-    "top-left": "-top-6 -start-12 lg:-top-8 lg:-start-24",
-    "top-right": "-top-6 -end-12 lg:-top-8 lg:-end-24",
-    "bottom-left": "-bottom-6 -start-12 lg:-bottom-8 lg:-start-24",
-    "bottom-right": "-bottom-6 -end-12 lg:-bottom-8 lg:-end-24",
+    "top-left": "-top-6 -start-12 lg:-top-4 lg:-start-32",
+    "top-right": "-top-6 -end-12 lg:-top-4 lg:-end-32",
+    "bottom-left": "-bottom-6 -start-12 lg:-bottom-4 lg:-start-32",
+    "bottom-right": "-bottom-6 -end-12 lg:-bottom-4 lg:-end-32",
   };
 
   return (
@@ -98,10 +98,29 @@ export default function Hero() {
           <div className="relative">
             <motion.div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, rgba(220,38,38,0.25) 0%, rgba(220,38,38,0.08) 40%, transparent 70%)" }} animate={{ scale: [1, 1.15, 1], opacity: [0.6, 1, 0.6] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} />
             <div className="absolute bottom-[-30px] left-1/2 -translate-x-1/2 w-[80%] h-[60px] rounded-full pointer-events-none" style={{ background: "radial-gradient(ellipse, rgba(220,38,38,0.4) 0%, transparent 70%)", filter: "blur(24px)" }} />
-            <FiperCard3D />
+
+            {/* Mobile: Physical card only (cleaner on narrow screens) */}
+            <div className="lg:hidden">
+              <FiperCard3D variant="physical" />
+            </div>
+
+            {/* Desktop: Stacked dual-card composition (Virtual behind, Physical in front) */}
+            <div className="hidden lg:block relative w-[480px] h-[320px]">
+              {/* Virtual Card — back layer, tilted further, slightly smaller, lower opacity */}
+              <div className="absolute top-0 right-0 z-10 origin-center" style={{ transform: "rotate(8deg) translate(20px, -10px) scale(0.78)", opacity: 0.88 }}>
+                <FiperCard3D variant="virtual" />
+              </div>
+
+              {/* Physical Card — front layer, more prominent */}
+              <div className="absolute bottom-0 left-0 z-20 origin-center" style={{ transform: "rotate(-3deg)" }}>
+                <FiperCard3D variant="physical" />
+              </div>
+            </div>
+
+            {/* Floating stat badges — positioned around the whole composition (desktop only) */}
             <div className="hidden lg:block">
               {stats.map((stat, i) => (
-                <motion.div key={stat.label} className={`absolute ${badgePositions[stat.pos]} z-20`} animate={{ y: [-5, 5, -5] }} transition={{ duration: 4 + i * 0.5, repeat: Infinity, ease: "easeInOut", delay: i * 0.4 }}>
+                <motion.div key={stat.label} className={`absolute ${badgePositions[stat.pos]} z-30`} animate={{ y: [-5, 5, -5] }} transition={{ duration: 4 + i * 0.5, repeat: Infinity, ease: "easeInOut", delay: i * 0.4 }}>
                   <div className="rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 px-5 py-3 text-center transition-all duration-300 hover:bg-white/[0.08] hover:border-red-500/20 hover:shadow-lg hover:shadow-red-500/10">
                     <p className="text-lg font-bold text-white">{stat.value}</p>
                     <p className="text-[11px] text-zinc-500">{stat.label}</p>

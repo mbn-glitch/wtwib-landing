@@ -78,8 +78,18 @@ export default function ChooseCard() {
           </div>
 
           {plans.map((plan, idx) => (
-            <motion.div key={plan.name} initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.7, delay: idx * 0.15 }} whileHover={{ y: -8, transition: { duration: 0.3, ease: "easeOut" } }}
-              className={`relative rounded-3xl overflow-hidden transition-all duration-500 ${plan.premium ? "border-2 border-fiper/50 bg-gradient-to-b from-red-500/[0.08] to-transparent hover:border-fiper hover:shadow-[0_0_50px_-10px_rgba(220,38,38,0.4)]" : plan.popular ? "border border-white/[0.08] bg-white/[0.015] hover:border-white/[0.15]" : "border border-white/[0.06] bg-white/[0.02] hover:border-red-500/30"}`}>
+            <motion.div
+              key={plan.name}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.7, delay: idx * 0.15 }}
+              whileHover={{ y: -8, transition: { duration: 0.3, ease: "easeOut" } }}
+              animate={plan.premium ? { y: [-3, 3, -3] } : {}}
+              {...(plan.premium && { transition: { y: { duration: 5, repeat: Infinity, ease: "easeInOut" }, default: { duration: 0.7, delay: idx * 0.15 } } })}
+              style={plan.premium ? { transform: "scale(1.03)" } : undefined}
+              className={`relative rounded-3xl overflow-hidden transition-all duration-500 ${plan.premium ? "border-2 border-fiper/60 bg-gradient-to-b from-red-500/[0.10] to-transparent hover:border-fiper hover:shadow-[0_0_60px_-10px_rgba(220,38,38,0.5)] shadow-[0_0_40px_-15px_rgba(220,38,38,0.3)]" : plan.popular ? "border border-white/[0.08] bg-white/[0.015] hover:border-white/[0.15]" : "border border-white/[0.06] bg-white/[0.02] hover:border-red-500/30"}`}
+            >
               {plan.premium && <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-fiper to-transparent" />}
               {plan.popular && (
                 <div className="absolute top-5 end-5 z-10">
@@ -153,7 +163,7 @@ export default function ChooseCard() {
                   </div>
                 </div>
                 <a href="https://crm.fiper.me" target="_blank" rel="noopener noreferrer"
-                  className={`group flex w-full items-center justify-center gap-2 rounded-full py-4 text-sm font-semibold transition-all duration-300 ${plan.popular ? "bg-fiper text-white hover:bg-fiper-dark hover:shadow-lg hover:shadow-red-500/25" : "bg-white/5 border border-white/10 text-white hover:bg-white/10"}`}>
+                  className={`group flex w-full items-center justify-center gap-2 rounded-full py-4 text-sm font-semibold transition-all duration-300 ${plan.premium ? "bg-fiper text-white hover:bg-fiper-dark hover:shadow-lg hover:shadow-red-500/25" : "bg-white/5 border border-white/10 text-white hover:bg-white/10"}`}>
                   {plan.cta}
                   <ArrowRight size={16} className="transition-transform group-hover:translate-x-1 rtl-flip" />
                 </a>
