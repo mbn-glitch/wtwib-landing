@@ -115,6 +115,35 @@ img[src*="Fiper_Logo"] {
   }
 }
 
+/* iOS Safari performance: reduce blur intensity on small screens to avoid GPU thrashing */
+@media (max-width: 767px) {
+  .glass {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .glass-strong {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+}
+
+/* GPU layer hints — promote heavy animated elements to their own compositor layer
+   so they don't trigger repaints of surrounding content during scroll */
+.gpu-layer {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Content-visibility — let the browser skip rendering of off-screen sections.
+   Massive scroll performance win on long pages. */
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 800px;
+}
+
 /* RTL / Arabic support */
 html[dir="rtl"] {
   font-family: "Tajawal", "Inter", system-ui, sans-serif;

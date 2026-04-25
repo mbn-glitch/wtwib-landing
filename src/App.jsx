@@ -21,14 +21,14 @@ function App() {
       <Navbar />
       <main>
         <Hero />
-        <TrustStrip />
-        <WhyFiper />
-        <ChooseCard />
-        <HowItWorks />
-        <TrustSecurity />
-        <FourReasons />
-        <FAQ />
-        <FinalCTA />
+        <div className="cv-auto"><TrustStrip /></div>
+        <div className="cv-auto"><WhyFiper /></div>
+        <div className="cv-auto"><ChooseCard /></div>
+        <div className="cv-auto"><HowItWorks /></div>
+        <div className="cv-auto"><TrustSecurity /></div>
+        <div className="cv-auto"><FourReasons /></div>
+        <div className="cv-auto"><FAQ /></div>
+        <div className="cv-auto"><FinalCTA /></div>
       </main>
       <Footer />
     </div>

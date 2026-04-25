@@ -6,9 +6,11 @@ export default function FiperCard3D({ variant = "virtual" }) {
   if (isPhysical) {
     return (
       <motion.div
-        className="relative w-[340px] h-[215px] sm:w-[380px] sm:h-[240px]"
+        className="relative w-[340px] h-[215px] sm:w-[380px] sm:h-[240px] gpu-layer"
         style={{ perspective: "1200px" }}
-        animate={{ y: [-10, 10, -10] }}
+        initial={{ y: 0 }}
+        whileInView={{ y: [-10, 10, -10] }}
+        viewport={{ margin: "-50px" }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
       >
         <div
@@ -32,9 +34,11 @@ export default function FiperCard3D({ variant = "virtual" }) {
 
   return (
     <motion.div
-      className="relative w-[340px] h-[215px] sm:w-[380px] sm:h-[240px]"
+      className="relative w-[340px] h-[215px] sm:w-[380px] sm:h-[240px] gpu-layer"
       style={{ perspective: "1200px" }}
-      animate={{ y: [-10, 10, -10] }}
+      initial={{ y: 0 }}
+      whileInView={{ y: [-10, 10, -10] }}
+      viewport={{ margin: "-50px" }}
       transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
     >
       <div

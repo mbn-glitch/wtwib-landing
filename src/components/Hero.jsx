@@ -96,7 +96,14 @@ export default function Hero() {
 
         <motion.div variants={fadeUp} className="mt-12 flex justify-center lg:mt-14">
           <div className="relative">
-            <motion.div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, rgba(220,38,38,0.25) 0%, rgba(220,38,38,0.08) 40%, transparent 70%)" }} animate={{ scale: [1, 1.15, 1], opacity: [0.6, 1, 0.6] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} />
+            <motion.div
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full pointer-events-none gpu-layer"
+              style={{ background: "radial-gradient(circle, rgba(220,38,38,0.25) 0%, rgba(220,38,38,0.08) 40%, transparent 70%)" }}
+              initial={{ scale: 1, opacity: 0.6 }}
+              whileInView={{ scale: [1, 1.15, 1], opacity: [0.6, 1, 0.6] }}
+              viewport={{ margin: "-100px" }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            />
             <div className="absolute bottom-[-30px] left-1/2 -translate-x-1/2 w-[80%] h-[60px] rounded-full pointer-events-none" style={{ background: "radial-gradient(ellipse, rgba(220,38,38,0.4) 0%, transparent 70%)", filter: "blur(24px)" }} />
 
             {/* Mobile: Physical card only (cleaner on narrow screens) */}
@@ -120,7 +127,14 @@ export default function Hero() {
             {/* Floating stat badges — positioned around the whole composition (desktop only) */}
             <div className="hidden lg:block">
               {stats.map((stat, i) => (
-                <motion.div key={stat.label} className={`absolute ${badgePositions[stat.pos]} z-30`} animate={{ y: [-5, 5, -5] }} transition={{ duration: 4 + i * 0.5, repeat: Infinity, ease: "easeInOut", delay: i * 0.4 }}>
+                <motion.div
+                  key={stat.label}
+                  className={`absolute ${badgePositions[stat.pos]} z-30 gpu-layer`}
+                  initial={{ y: 0 }}
+                  whileInView={{ y: [-5, 5, -5] }}
+                  viewport={{ margin: "-50px" }}
+                  transition={{ duration: 4 + i * 0.5, repeat: Infinity, ease: "easeInOut", delay: i * 0.4 }}
+                >
                   <div className="rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 px-5 py-3 text-center transition-all duration-300 hover:bg-white/[0.08] hover:border-red-500/20 hover:shadow-lg hover:shadow-red-500/10">
                     <p className="text-lg font-bold text-white">{stat.value}</p>
                     <p className="text-[11px] text-zinc-500">{stat.label}</p>
