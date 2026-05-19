@@ -6,6 +6,27 @@ import { ArrowRight } from "lucide-react";
 
 const faqKeys = ["q1", "q2", "q3", "q4", "q5", "q6"];
 
+function FAQSchema({ faqs }) {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map((f) => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": f.a,
+      },
+    })),
+  };
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
 function FAQItem({ q, a, index, isOpen, onToggle }) {
   return (
     <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.5, delay: index * 0.05 }} className="relative">
@@ -37,8 +58,14 @@ export default function FAQ() {
   const { t } = useTranslation();
   const [openIndex, setOpenIndex] = useState(0);
 
+  const faqs = faqKeys.map((key, i) => ({
+    q: t(`faq.${key}`),
+    a: t(`faq.a${i + 1}`),
+  }));
+
   return (
     <section id="faq" className="relative py-24 md:py-32 pb-16 md:pb-20">
+      <FAQSchema faqs={faqs} />
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
       <div className="mx-auto max-w-3xl px-6">
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.7 }} className="text-center mb-16 md:mb-20">

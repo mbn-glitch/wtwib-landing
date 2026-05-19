@@ -24,6 +24,9 @@ export default function FiperCard3D({ variant = "virtual" }) {
           <img
             src="/fiper-physical-card.png"
             alt="Fiper Physical Card"
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
             className="w-full h-full object-contain select-none pointer-events-none"
             draggable={false}
           />

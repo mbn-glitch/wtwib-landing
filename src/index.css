@@ -130,13 +130,23 @@ img[src*="Fiper_Logo"] {
 /* iOS Safari performance: reduce blur intensity on small screens to avoid GPU thrashing */
 @media (max-width: 767px) {
   .glass {
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
     background: rgba(255, 255, 255, 0.04);
   }
   .glass-strong {
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+}
+@media (max-width: 480px) {
+  .glass {
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+  .glass-strong {
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
   }
 }
 
@@ -151,19 +161,37 @@ img[src*="Fiper_Logo"] {
 }
 
 /* GPU layer hints — promote heavy animated elements to their own compositor layer
-   so they don't trigger repaints of surrounding content during scroll */
+   so they don't trigger repaints of surrounding content during scroll.
+   Note: permanent `will-change` was removed; it wastes GPU memory and isn't needed
+   when transform: translateZ(0) already establishes a compositor layer. */
 .gpu-layer {
-  will-change: transform;
   transform: translateZ(0);
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }
 
-/* Content-visibility — let the browser skip rendering of off-screen sections.
-   Massive scroll performance win on long pages. */
+/* Performance hint without hiding content (prevents scroll flicker).
+   `content-visibility: auto` was causing flash/flicker on mobile as sections
+   entered the viewport. `contain` keeps the optimization signal without that. */
 .cv-auto {
-  content-visibility: auto;
-  contain-intrinsic-size: 1px 800px;
+  contain: layout style paint;
+}
+
+/* Skip-to-content link (accessibility) */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  z-index: 100;
+  padding: 12px 20px;
+  background: #DC2626;
+  color: white;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: top 0.3s;
+}
+.skip-link:focus {
+  top: 16px;
 }
 
 /* RTL / Arabic support */

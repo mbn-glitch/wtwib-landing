@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
@@ -16,6 +17,24 @@ const socials = [
 
 export default function Footer() {
   const { t } = useTranslation();
+  const [emailValue, setEmailValue] = useState("");
+  const [submitState, setSubmitState] = useState("idle"); // idle | submitting | success | error
+
+  const handleNewsletterSubmit = (e) => {
+    e.preventDefault();
+    if (!emailValue || !/\S+@\S+\.\S+/.test(emailValue)) {
+      setSubmitState("error");
+      return;
+    }
+    setSubmitState("submitting");
+    const message = encodeURIComponent(`Hi! Please add me to the Fiper Card newsletter. Email: ${emailValue}`);
+    window.open(`https://wa.me/971561111855?text=${message}`, "_blank", "noopener");
+    setTimeout(() => {
+      setSubmitState("success");
+      setEmailValue("");
+      setTimeout(() => setSubmitState("idle"), 4000);
+    }, 600);
+  };
 
   const productLinks = [
     { label: t("nav.features"), href: "#features" },
@@ -32,19 +51,38 @@ export default function Footer() {
           <div className="max-w-2xl mx-auto text-center">
             <h3 className="text-2xl font-semibold text-white mb-3">{t("footer.newsletter")}</h3>
             <p className="text-sm text-zinc-500 mb-8">{t("footer.newsletterDesc")}</p>
-            <form onSubmit={(e) => e.preventDefault()} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-              <input type="email" placeholder={t("footer.emailPlaceholder")} className="flex-1 rounded-full bg-white/5 border border-white/10 px-5 py-3 text-sm text-white placeholder-zinc-600 outline-none transition-all duration-300 focus:border-fiper/50 focus:bg-white/[0.07] focus:ring-1 focus:ring-fiper/20" />
-              <button type="submit" className="group inline-flex items-center justify-center gap-2 rounded-full bg-fiper px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-fiper-dark hover:shadow-lg hover:shadow-red-500/20">
-                {t("footer.subscribe")}
+            <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+              <input
+                type="email"
+                value={emailValue}
+                onChange={(e) => { setEmailValue(e.target.value); if (submitState === "error") setSubmitState("idle"); }}
+                placeholder={t("footer.emailPlaceholder")}
+                aria-label={t("footer.emailPlaceholder")}
+                className={`flex-1 rounded-full bg-white/5 border ps-5 pe-5 py-3 text-sm text-white placeholder-zinc-600 outline-none transition-all duration-300 focus:bg-white/[0.07] focus:ring-1 ${
+                  submitState === "error" ? "border-red-500 focus:border-red-500 focus:ring-red-500/20" : "border-white/10 focus:border-fiper/50 focus:ring-fiper/20"
+                }`}
+              />
+              <button
+                type="submit"
+                disabled={submitState === "submitting"}
+                className="group inline-flex items-center justify-center gap-2 rounded-full bg-fiper px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-fiper-dark hover:shadow-lg hover:shadow-red-500/20 disabled:opacity-60"
+              >
+                {submitState === "submitting" ? "..." : t("footer.subscribe")}
                 <ArrowRight size={14} className="transition-transform group-hover:translate-x-0.5 rtl-flip" />
               </button>
             </form>
+            {submitState === "success" && (
+              <p className="mt-3 text-xs text-emerald-400" role="status" aria-live="polite">✓ Opening WhatsApp — please send the prefilled message.</p>
+            )}
+            {submitState === "error" && (
+              <p className="mt-3 text-xs text-red-400" role="alert">Please enter a valid email address.</p>
+            )}
           </div>
         </div>
 
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
           <div>
-            <a href="#home"><img src="/Fiper_Logo_white2.png" alt="Fiper" className="h-20 w-auto object-contain" /></a>
+            <a href="#home"><img src="/Fiper_Logo_white2.png" alt="Fiper" loading="lazy" decoding="async" className="h-20 w-auto object-contain" /></a>
             <p className="mt-4 text-sm leading-relaxed text-zinc-500">{t("footer.tagline")}</p>
             <div className="mt-6 flex items-center gap-3">
               {socials.map((s) => (

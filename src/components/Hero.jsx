@@ -1,6 +1,5 @@
-import { useRef, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowRight, Layers, Globe } from "lucide-react";
 import FiperCard3D from "./FiperCard3D";
 
@@ -14,38 +13,14 @@ const fadeUp = {
   show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
 };
 
-function AnimatedCounter({ value, prefix = "", suffix = "", isText = false }) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
-  const [display, setDisplay] = useState(isText ? value : 0);
-
-  useEffect(() => {
-    if (!isInView || isText) return;
-    const target = typeof value === "number" ? value : parseInt(value, 10);
-    if (isNaN(target)) return;
-    const duration = 1200;
-    const startTime = performance.now();
-    function animate(currentTime) {
-      const elapsed = currentTime - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setDisplay(Math.round(eased * target));
-      if (progress < 1) requestAnimationFrame(animate);
-    }
-    requestAnimationFrame(animate);
-  }, [isInView, value, isText]);
-
-  return <span ref={ref}>{isText ? value : `${prefix}${display}${suffix}`}</span>;
-}
-
 export default function Hero() {
   const { t } = useTranslation();
 
   const stats = [
-    { value: t("hero.stat1Value"), label: t("hero.stat1Label"), pos: "top-left", isText: true },
-    { value: t("hero.stat2Value"), label: t("hero.stat2Label"), pos: "top-right", isText: true },
-    { value: t("hero.stat3Value"), label: t("hero.stat3Label"), pos: "bottom-left", isText: true },
-    { value: t("hero.stat4Value"), label: t("hero.stat4Label"), pos: "bottom-right", isText: true },
+    { value: t("hero.stat1Value"), label: t("hero.stat1Label"), pos: "top-left" },
+    { value: t("hero.stat2Value"), label: t("hero.stat2Label"), pos: "top-right" },
+    { value: t("hero.stat3Value"), label: t("hero.stat3Label"), pos: "bottom-left" },
+    { value: t("hero.stat4Value"), label: t("hero.stat4Label"), pos: "bottom-right" },
   ];
 
   const badgePositions = {

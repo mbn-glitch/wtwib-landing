@@ -1,14 +1,17 @@
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, ArrowRight, LifeBuoy, ArrowLeft } from "lucide-react";
+import Fuse from "fuse.js";
 import { getCategories } from "../data/helpCenterData";
 import useDirection from "../hooks/useDirection";
 import LanguageSwitcher from "../components/LanguageSwitcher";
 import WhatsAppButton from "../components/WhatsAppButton";
+import StickyMobileCTA from "../components/StickyMobileCTA";
 
 const WHATSAPP_URL = "https://wa.me/971561111855?text=Hello%2C%20I%20need%20help%20with%20my%20Fiper%20Card";
+const RECENT_KEY = "fiper_recent_searches";
 
 function WhatsAppIcon({ className = "w-6 h-6" }) {
   return (
@@ -66,25 +69,111 @@ function CategorySection({ category }) {
 export default function HelpCenter() {
   const { t } = useTranslation();
   useDirection();
+  const [rawQuery, setRawQuery] = useState("");
   const [query, setQuery] = useState("");
+  const [searchFocused, setSearchFocused] = useState(false);
+  const searchInputRef = useRef(null);
+
+  const [recentSearches, setRecentSearches] = useState(() => {
+    try {
+      const stored = localStorage.getItem(RECENT_KEY);
+      return stored ? JSON.parse(stored).slice(0, 5) : [];
+    } catch {
+      return [];
+    }
+  });
 
   useEffect(() => {
     document.title = t("helpCenter.heroTitle1") + " " + t("helpCenter.heroTitle2") + " | Fiper Card";
     window.scrollTo(0, 0);
   }, [t]);
 
+  // Debounce raw input → query (300 ms)
+  useEffect(() => {
+    const timer = setTimeout(() => setQuery(rawQuery), 300);
+    return () => clearTimeout(timer);
+  }, [rawQuery]);
+
+  // "/" focuses search, Esc clears + blurs
+  useEffect(() => {
+    const handler = (e) => {
+      const tag = document.activeElement?.tagName;
+      if (e.key === "/" && tag !== "INPUT" && tag !== "TEXTAREA") {
+        e.preventDefault();
+        searchInputRef.current?.focus();
+      }
+      if (e.key === "Escape" && document.activeElement === searchInputRef.current) {
+        searchInputRef.current?.blur();
+        setRawQuery("");
+        setQuery("");
+      }
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, []);
+
   const categories = useMemo(() => getCategories(t), [t]);
+
+  const fuse = useMemo(() => {
+    const allFaqs = categories.flatMap((cat) =>
+      cat.faqs.map((f) => ({ ...f, categoryId: cat.id, categoryTitle: cat.title, categoryIcon: cat.icon }))
+    );
+    return new Fuse(allFaqs, {
+      keys: [
+        { name: "q", weight: 0.7 },
+        { name: "a", weight: 0.3 },
+      ],
+      threshold: 0.4,
+      ignoreLocation: true,
+      includeMatches: true,
+      minMatchCharLength: 2,
+    });
+  }, [categories]);
 
   const filtered = useMemo(() => {
     if (!query.trim()) return categories;
-    const q = query.toLowerCase();
-    return categories.map((cat) => ({ ...cat, faqs: cat.faqs.filter((f) => f.q.toLowerCase().includes(q) || f.a.toLowerCase().includes(q)) })).filter((cat) => cat.faqs.length > 0);
-  }, [query, categories]);
+    const results = fuse.search(query.trim());
+    const grouped = {};
+    results.forEach((r) => {
+      const item = r.item;
+      if (!grouped[item.categoryId]) {
+        grouped[item.categoryId] = {
+          id: item.categoryId,
+          title: item.categoryTitle,
+          icon: item.categoryIcon,
+          faqs: [],
+        };
+      }
+      grouped[item.categoryId].faqs.push({ q: item.q, a: item.a });
+    });
+    return Object.values(grouped);
+  }, [query, fuse, categories]);
 
   const totalResults = filtered.reduce((n, c) => n + c.faqs.length, 0);
 
+  // Persist successful searches to localStorage (top 5, unique, most-recent-first)
+  useEffect(() => {
+    const q = query.trim();
+    if (!q || totalResults === 0) return;
+    setRecentSearches((prev) => {
+      const next = [q, ...prev.filter((s) => s !== q)].slice(0, 5);
+      try {
+        localStorage.setItem(RECENT_KEY, JSON.stringify(next));
+      } catch {
+        // ignore quota / privacy mode errors
+      }
+      return next;
+    });
+  }, [query, totalResults]);
+
+  const clearSearch = () => {
+    setRawQuery("");
+    setQuery("");
+  };
+
   return (
     <div className="noise-bg relative min-h-screen bg-black text-white">
+      <a href="#help-main" className="skip-link">Skip to main content</a>
       <nav className="fixed top-0 left-0 right-0 z-50 bg-black/60 backdrop-blur-xl border-b border-white/10">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="flex items-center justify-between py-5">
@@ -103,7 +192,7 @@ export default function HelpCenter() {
         </div>
       </nav>
 
-      <main className="pt-36 pb-24">
+      <main id="help-main" className="pt-36 pb-24">
         <section className="relative overflow-hidden">
           <div className="absolute inset-0 pointer-events-none"><div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full bg-red-600/8 blur-[120px]" /></div>
           <div className="relative mx-auto max-w-3xl px-6 text-center">
@@ -116,39 +205,111 @@ export default function HelpCenter() {
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.15 }} className="mt-10">
               <div className="relative">
                 <Search size={20} className="absolute start-5 top-1/2 -translate-y-1/2 text-zinc-500" />
-                <input type="text" value={query} onChange={(e) => setQuery(e.target.value)} placeholder={t("helpCenter.searchPlaceholder")} className="w-full rounded-2xl bg-white/5 border border-white/10 ps-14 pe-5 py-4 text-base text-white placeholder-zinc-600 outline-none transition-all duration-300 focus:border-fiper/50 focus:bg-white/[0.07] focus:ring-1 focus:ring-fiper/20" />
-                {query && <button onClick={() => setQuery("")} className="absolute end-5 top-1/2 -translate-y-1/2 text-xs text-zinc-500 hover:text-white transition-colors">{t("helpCenter.clear")}</button>}
+                <input
+                  ref={searchInputRef}
+                  type="text"
+                  value={rawQuery}
+                  onChange={(e) => setRawQuery(e.target.value)}
+                  onFocus={() => setSearchFocused(true)}
+                  onBlur={() => setSearchFocused(false)}
+                  placeholder={t("helpCenter.searchPlaceholder")}
+                  aria-label={t("helpCenter.searchPlaceholder")}
+                  className="w-full rounded-2xl bg-white/5 border border-white/10 ps-14 pe-16 py-4 text-base text-white placeholder-zinc-600 outline-none transition-all duration-300 focus:border-fiper/50 focus:bg-white/[0.07] focus:ring-1 focus:ring-fiper/20"
+                />
+                {rawQuery ? (
+                  <button
+                    onClick={clearSearch}
+                    aria-label="Clear search"
+                    className="absolute end-5 top-1/2 -translate-y-1/2 text-xs text-zinc-500 hover:text-white transition-colors"
+                  >
+                    {t("helpCenter.clear")}
+                  </button>
+                ) : (
+                  !searchFocused && (
+                    <kbd className="hidden md:inline-flex absolute end-5 top-1/2 -translate-y-1/2 items-center px-2 py-0.5 rounded-md bg-white/10 border border-white/15 text-xs text-zinc-400 pointer-events-none">/</kbd>
+                  )
+                )}
               </div>
               {query && <p className="mt-3 text-sm text-zinc-500">{totalResults} {totalResults === 1 ? "result" : "results"}</p>}
+              {!rawQuery && recentSearches.length > 0 && (
+                <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
+                  <span className="text-xs text-zinc-500">Recent:</span>
+                  {recentSearches.map((s) => (
+                    <button
+                      key={s}
+                      onClick={() => setRawQuery(s)}
+                      className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-zinc-400 hover:bg-white/10 hover:text-white transition-colors"
+                    >
+                      {s}
+                    </button>
+                  ))}
+                </div>
+              )}
             </motion.div>
           </div>
         </section>
 
-        {!query && (
-          <section className="mx-auto max-w-5xl px-6 mt-16">
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.25 }} className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {categories.map((cat, i) => {
-                const Icon = cat.icon;
-                return (
-                  <motion.a key={cat.id} href={`#${cat.id}`} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.05 * i }} whileHover={{ y: -4, transition: { duration: 0.25 } }} className="glass card-shine rounded-2xl p-6 flex items-start gap-4 transition-all duration-300 hover:bg-white/[0.04] hover:border-white/20 group">
-                    <div className="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-xl bg-fiper/10 group-hover:bg-fiper/15 transition-colors duration-300"><Icon size={20} className="text-fiper" /></div>
-                    <div>
-                      <h3 className="text-sm font-semibold text-white">{cat.title}</h3>
-                      <p className="text-xs text-zinc-500 mt-1">{cat.faqs.length} {cat.faqs.length === 1 ? "article" : "articles"}</p>
-                    </div>
-                  </motion.a>
-                );
-              })}
-            </motion.div>
-          </section>
-        )}
+        <section className="mx-auto max-w-5xl px-6 mt-16">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.25 }} className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {categories.map((cat, i) => {
+              const Icon = cat.icon;
+              const matchedCount = query ? (filtered.find((f) => f.id === cat.id)?.faqs.length ?? 0) : cat.faqs.length;
+              const isMatched = !query || matchedCount > 0;
+              return (
+                <motion.a
+                  key={cat.id}
+                  href={`#${cat.id}`}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: isMatched ? 1 : 0.3, y: 0 }}
+                  transition={{ duration: 0.4, delay: 0.05 * i }}
+                  whileHover={isMatched ? { y: -4, transition: { duration: 0.25 } } : {}}
+                  className={`glass card-shine rounded-2xl p-6 flex items-start gap-4 transition-all duration-300 group ${
+                    isMatched ? "hover:bg-white/[0.04] hover:border-white/20" : "pointer-events-none"
+                  }`}
+                >
+                  <div className={`flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-xl transition-colors duration-300 ${
+                    isMatched ? "bg-fiper/10 group-hover:bg-fiper/15" : "bg-white/5"
+                  }`}>
+                    <Icon size={20} className={isMatched ? "text-fiper" : "text-zinc-600"} />
+                  </div>
+                  <div>
+                    <h3 className={`text-sm font-semibold ${isMatched ? "text-white" : "text-zinc-500"}`}>{cat.title}</h3>
+                    <p className="text-xs text-zinc-500 mt-1">
+                      {matchedCount} {matchedCount === 1 ? "article" : "articles"}
+                    </p>
+                  </div>
+                </motion.a>
+              );
+            })}
+          </motion.div>
+        </section>
 
         <div className="mx-auto max-w-3xl px-6 mt-20 space-y-16">
           {filtered.map((cat) => <CategorySection key={cat.id} category={cat} />)}
           {query && filtered.length === 0 && (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-16">
-              <p className="text-zinc-500 text-lg">{t("helpCenter.noResults", { query })}</p>
-              <p className="text-zinc-600 text-sm mt-2">{t("helpCenter.noResultsHint")}</p>
+              <p className="text-zinc-400 text-lg mb-3">{t("helpCenter.noResults", { query })}</p>
+              <p className="text-zinc-500 text-sm mb-8">{t("helpCenter.noResultsHint")}</p>
+              <div className="flex flex-wrap items-center justify-center gap-2 max-w-md mx-auto">
+                <span className="text-xs text-zinc-500">Try:</span>
+                {["activation", "Apple Pay", "ATM", "fees", "delivery"].map((s) => (
+                  <button
+                    key={s}
+                    onClick={() => setRawQuery(s)}
+                    className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-zinc-400 hover:bg-white/10 hover:text-white transition-colors"
+                  >
+                    {s}
+                  </button>
+                ))}
+              </div>
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-8 inline-flex items-center gap-2 px-5 py-2 rounded-full bg-fiper/10 border border-fiper/20 text-sm font-medium text-fiper hover:bg-fiper/20 transition-colors"
+              >
+                Contact Support
+              </a>
             </motion.div>
           )}
         </div>
@@ -185,12 +346,13 @@ export default function HelpCenter() {
 
       <footer className="border-t border-white/10 bg-black">
         <div className="mx-auto max-w-7xl px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <Link to="/"><img src="/Fiper_Logo_white2.png" alt="Fiper" className="h-14 w-auto object-contain" /></Link>
+          <Link to="/"><img src="/Fiper_Logo_white2.png" alt="Fiper" loading="lazy" decoding="async" className="h-14 w-auto object-contain" /></Link>
           <p className="text-xs text-zinc-600">{t("footer.copyright")}</p>
         </div>
       </footer>
 
       <WhatsAppButton />
+      <StickyMobileCTA />
     </div>
   );
 }
