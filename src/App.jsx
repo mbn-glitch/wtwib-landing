@@ -4,7 +4,6 @@ import ScrollProgress from "./components/ScrollProgress";
 import WhatsAppButton from "./components/WhatsAppButton";
 import StickyMobileCTA from "./components/StickyMobileCTA";
 import Hero from "./components/Hero";
-import TrustStrip from "./components/TrustStrip";
 import WhyFiper from "./components/WhyFiper";
 import ChooseCard from "./components/ChooseCard";
 import HowItWorks from "./components/HowItWorks";
@@ -24,7 +23,6 @@ function App() {
       <Navbar />
       <main>
         <Hero />
-        <div className="cv-auto"><TrustStrip /></div>
         <div className="cv-auto"><WhyFiper /></div>
         <div className="cv-auto"><ChooseCard /></div>
         <div className="cv-auto"><HowItWorks /></div>
