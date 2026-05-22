@@ -10,8 +10,8 @@ import LanguageSwitcher from "../components/LanguageSwitcher";
 import WhatsAppButton from "../components/WhatsAppButton";
 import StickyMobileCTA from "../components/StickyMobileCTA";
 
-const WHATSAPP_URL = "https://wa.me/971561111855?text=Hello%2C%20I%20need%20help%20with%20my%20Fiper%20Card";
-const RECENT_KEY = "fiper_recent_searches";
+const WHATSAPP_URL = "https://wa.me/971568010724?text=Hello%2C%20I%20need%20help%20with%20my%20Wtraders%20Card";
+const RECENT_KEY = "wtraders_recent_searches";
 
 function WhatsAppIcon({ className = "w-6 h-6" }) {
   return (
@@ -23,8 +23,8 @@ function WhatsAppIcon({ className = "w-6 h-6" }) {
 
 function AccordionItem({ faq, isOpen, onToggle }) {
   return (
-    <div className={`relative rounded-2xl transition-all duration-500 ${isOpen ? "bg-gradient-to-r from-red-500/20 via-red-600/10 to-red-500/20 p-px shadow-[0_0_30px_-5px_rgba(220,38,38,0.15)]" : "bg-gradient-to-r from-white/[0.06] via-white/[0.03] to-white/[0.06] p-px"}`}>
-      <div className={`rounded-2xl transition-all duration-500 ${isOpen ? "bg-gradient-to-b from-red-500/[0.05] to-black/95" : "bg-black/90 hover:bg-white/[0.02]"}`}>
+    <div className={`relative rounded-2xl transition-all duration-500 ${isOpen ? "bg-gradient-to-r from-amber-500/20 via-amber-600/10 to-amber-500/20 p-px shadow-[0_0_30px_-5px_rgba(201,169,97,0.15)]" : "bg-gradient-to-r from-white/[0.06] via-white/[0.03] to-white/[0.06] p-px"}`}>
+      <div className={`rounded-2xl transition-all duration-500 ${isOpen ? "bg-gradient-to-b from-amber-500/[0.05] to-black/95" : "bg-black/90 hover:bg-white/[0.02]"}`}>
         <button onClick={onToggle} className="flex w-full items-center justify-between px-6 py-5 text-start group" aria-expanded={isOpen}>
           <span className={`text-sm font-medium pe-6 transition-colors duration-300 sm:text-base ${isOpen ? "text-white" : "text-zinc-300 group-hover:text-white"}`}>{faq.q}</span>
           <span className={`flex-shrink-0 flex items-center justify-center w-7 h-7 rounded-full transition-all duration-500 ${isOpen ? "bg-fiper/20 border border-fiper/30 text-fiper" : "bg-white/5 border border-white/10 text-zinc-500 group-hover:border-white/20 group-hover:text-white"}`}>
@@ -35,7 +35,7 @@ function AccordionItem({ faq, isOpen, onToggle }) {
           {isOpen && (
             <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ height: { duration: 0.4, ease: [0.16, 1, 0.3, 1] }, opacity: { duration: 0.3, delay: 0.1 } }} className="overflow-hidden">
               <div className="px-6 pb-5 pt-0">
-                <div className="h-px bg-gradient-to-r from-transparent via-red-500/20 to-transparent mb-4" />
+                <div className="h-px bg-gradient-to-r from-transparent via-amber-500/20 to-transparent mb-4" />
                 <p className="text-sm leading-relaxed text-zinc-400">{faq.a}</p>
               </div>
             </motion.div>
@@ -84,7 +84,7 @@ export default function HelpCenter() {
   });
 
   useEffect(() => {
-    document.title = t("helpCenter.heroTitle1") + " " + t("helpCenter.heroTitle2") + " | Fiper Card";
+    document.title = t("helpCenter.heroTitle1") + " " + t("helpCenter.heroTitle2") + " | Wtraders Card";
     window.scrollTo(0, 0);
   }, [t]);
 
@@ -177,14 +177,14 @@ export default function HelpCenter() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-black/60 backdrop-blur-xl border-b border-white/10">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="flex items-center justify-between py-5">
-            <Link to="/" className="flex-shrink-0"><img src="/Fiper_Logo_white2.png" alt="Fiper" className="h-20 md:h-24 w-auto object-contain" /></Link>
+            <Link to="/" className="flex-shrink-0"><img src="/wtraders-logo.png" alt="Wtraders" className="h-20 md:h-24 w-auto object-contain" /></Link>
             <div className="flex items-center gap-3">
               <Link to="/" className="hidden sm:inline-flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors">
                 <ArrowLeft size={14} className="rtl-flip" />
                 {t("helpCenter.backToHome")}
               </Link>
               <LanguageSwitcher />
-              <a href="https://crm.fiper.me" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-fiper px-5 py-2 text-sm font-semibold text-white transition-all duration-300 hover:bg-fiper-dark">
+              <a href="https://crm.wtradersworld.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-fiper px-5 py-2 text-sm font-semibold text-white transition-all duration-300 hover:bg-fiper-dark">
                 {t("nav.getYourCard")}
               </a>
             </div>
@@ -194,7 +194,7 @@ export default function HelpCenter() {
 
       <main id="help-main" className="pt-36 pb-24">
         <section className="relative overflow-hidden">
-          <div className="absolute inset-0 pointer-events-none"><div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full bg-red-600/8 blur-[120px]" /></div>
+          <div className="absolute inset-0 pointer-events-none"><div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full bg-amber-600/8 blur-[120px]" /></div>
           <div className="relative mx-auto max-w-3xl px-6 text-center">
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
               <h1 className="text-4xl font-bold sm:text-5xl md:text-6xl" style={{ letterSpacing: "-0.04em" }}>
@@ -331,7 +331,7 @@ export default function HelpCenter() {
                   {t("helpCenter.whatsappCta")} <ArrowRight size={14} className="rtl-flip" />
                 </span>
               </motion.a>
-              <motion.a href="https://crm.fiper.me" target="_blank" rel="noopener noreferrer" whileHover={{ y: -4, transition: { duration: 0.25 } }} className="glass card-shine rounded-2xl p-7 transition-all duration-300 hover:bg-white/[0.04] hover:border-white/20 group block">
+              <motion.a href="https://crm.wtradersworld.com" target="_blank" rel="noopener noreferrer" whileHover={{ y: -4, transition: { duration: 0.25 } }} className="glass card-shine rounded-2xl p-7 transition-all duration-300 hover:bg-white/[0.04] hover:border-white/20 group block">
                 <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-fiper/10 mb-5"><LifeBuoy size={24} className="text-fiper" /></div>
                 <h3 className="text-lg font-semibold text-white mb-2">{t("helpCenter.ticketTitle")}</h3>
                 <p className="text-sm text-zinc-400 mb-5">{t("helpCenter.ticketDesc")}</p>
@@ -346,7 +346,7 @@ export default function HelpCenter() {
 
       <footer className="border-t border-white/10 bg-black">
         <div className="mx-auto max-w-7xl px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <Link to="/"><img src="/Fiper_Logo_white2.png" alt="Fiper" loading="lazy" decoding="async" className="h-14 w-auto object-contain" /></Link>
+          <Link to="/"><img src="/wtraders-logo.png" alt="Wtraders" loading="lazy" decoding="async" className="h-14 w-auto object-contain" /></Link>
           <p className="text-xs text-zinc-600">{t("footer.copyright")}</p>
         </div>
       </footer>

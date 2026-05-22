@@ -29,8 +29,8 @@
   "trustStrip": {
     "title": "Önde gelen platformlardaki yatırımcılar tarafından güveniliyor"
   },
-  "whyFiper": {
-    "label": "Neden Fiper Kart",
+  "whyWtraders": {
+    "label": "Neden Wtraders Kart",
     "heading1": "İhtiyacınız olan her şey.",
     "heading2": "Olmayan hiçbir şey.",
     "f1Title": "Anında Aktivasyon",
@@ -62,8 +62,8 @@
     "atmAccess": "Yükleme limiti",
     "validity": "Geçerlilik",
     "threeYears": "3 yıl",
-    "virtualCta": "Fiper Kartınızı Alın",
-    "physicalCta": "Fiper Kartınızı Alın",
+    "virtualCta": "Wtraders Kartınızı Alın",
+    "physicalCta": "Wtraders Kartınızı Alın",
     "vf1": "5 dakikada aktivasyon",
     "vf2": "Apple Pay destekli",
     "vf3": "Google Pay destekli",
@@ -93,13 +93,13 @@
     "label": "Nasıl Çalışır",
     "heading1": "Kullanıma hazır",
     "heading2": "üç basit adımda.",
-    "step1Title": "Fiper hesabınızı açın",
+    "step1Title": "Wtraders hesabınızı açın",
     "step1Desc": "Hesabınızı dakikalar içinde oluşturun ve fonlarınızı tek bir birleşik panelden yönetmeye başlayın.",
     "step2Title": "Kartınızı sipariş edin",
     "step2Desc": "Sanal veya Fiziksel arasında seçim yapın, tek seferlik düzenleme ücretini ödeyin, hazırsınız.",
     "step3Title": "Hemen harcamaya başlayın",
     "step3Desc": "Sanal Kartınızı çevrimiçi anında kullanın veya Fiziksel Kartınızın gelmesini bekleyin ve dünya çapında çekim yapın.",
-    "cta": "Fiper Kartınızı Alın"
+    "cta": "Wtraders Kartınızı Alın"
   },
   "trustSecurity": {
     "label": "Güven ve Güvenlik",
@@ -119,20 +119,20 @@
     "heading1": "Dört sebep.",
     "heading2": "Tek sonuç.",
     "r1Title": "Trading Hesabınıza Doğrudan Bağlantı",
-    "r1Desc": "Fiper kartınız doğrudan trading hesabınıza bağlanır — aracı olmadan ve ek adım olmadan, kârları dakikalar içinde satın alma gücüne dönüştürün.",
+    "r1Desc": "Wtraders kartınız doğrudan trading hesabınıza bağlanır — aracı olmadan ve ek adım olmadan, kârları dakikalar içinde satın alma gücüne dönüştürün.",
     "r2Title": "Anında Aktivasyon — 5 Dakikada Aktif",
     "r2Desc": "Sanal kart 5 dakikada aktif. Fiziksel kart 5-10 dakikada hazır. Kaydolduğunuz gün harcamaya başlayın — gecikme yok, bürokrasi yok.",
     "r3Title": "Apple Pay ve Google Pay Hazır",
     "r3Desc": "Sanal Kartınızı telefon cüzdanınıza anında ekleyin. Dünyanın her yerinde tek dokunuşla ödeyin — kârlarınız artık tam anlamıyla cebinizde.",
     "r4Title": "Aylık Ücret Yok — Asla",
     "r4Desc": "Kartınızı düzenlemek için bir kez ödeyin. Aylık ücret yok, gizli ücret yok, abonelik yok. Sadece %1.7 yükleme ve işlem başına $0.40 — tamamen şeffaf.",
-    "cta": "Fiper Kartınızı Alın"
+    "cta": "Wtraders Kartınızı Alın"
   },
   "faq": {
     "label": "SSS",
     "heading1": "Sorular?",
     "heading2": "Cevaplar.",
-    "subtext": "Fiper Kart hakkında bilmeniz gereken her şey.",
+    "subtext": "Wtraders Kart hakkında bilmeniz gereken her şey.",
     "viewAll": "Tüm SSS'leri Görüntüle",
     "q1": "Kart aktivasyonu ne kadar sürer?",
     "a1": "Sanal Kart: 5 dakika içinde. Fiziksel Kart: sipariş sonrası 5-10 dakika. Sanal Kartınızı aktivasyondan hemen sonra kullanmaya başlayabilirsiniz.",
@@ -142,16 +142,16 @@
     "a3": "Fiziksel Kart teslimatı konumunuza bağlı olarak genellikle 1-2 hafta sürer. Kartınız gönderildiğinde takip bilgilerini alacaksınız.",
     "q4": "Kartımı dondurabilir miyim?",
     "a4": "Evet, kartınızı kontrol panelinizden tek tıkla anında dondurabilir ve çözebilirsiniz. Bu, kartınızın güvenliği üzerinde her zaman tam kontrol sağlar.",
-    "q5": "Kart almak için Fiper hesabı gerekli mi?",
-    "a5": "Evet, kartınızı sipariş etmek ve yönetmek için önce bir Fiper hesabı oluşturmanız gerekir. Hesap oluşturma sadece birkaç dakika sürer.",
+    "q5": "Kart almak için Wtraders hesabı gerekli mi?",
+    "a5": "Evet, kartınızı sipariş etmek ve yönetmek için önce bir Wtraders hesabı oluşturmanız gerekir. Hesap oluşturma sadece birkaç dakika sürer.",
     "q6": "Döviz kurunu kim belirler?",
     "a6": "Döviz kuru, mevcut piyasa kurlarına göre kart ihraççısı tarafından belirlenir. Oranlar işlem anında uygulanır."
   },
   "finalCta": {
     "heading1": "Trade edin. Çekin.",
     "heading2": "Keyfini çıkarın.",
-    "subtext": "Kârlarınız artık sadece ekrandaki sayılar değil. Fiper Kart ile gerçek satın alma gücüne dönüşürler — sadece dakikalar içinde.",
-    "cta": "Fiper Kartınızı Alın"
+    "subtext": "Kârlarınız artık sadece ekrandaki sayılar değil. Wtraders Kart ile gerçek satın alma gücüne dönüşürler — sadece dakikalar içinde.",
+    "cta": "Wtraders Kartınızı Alın"
   },
   "footer": {
     "tagline": "Trading kârlarını gerçek dünya satın alma gücüne dönüştürün.",
@@ -165,7 +165,7 @@
     "privacy": "Gizlilik Politikası",
     "cookie": "Çerez Politikası",
     "refund": "İade Politikası",
-    "copyright": "© 2026 Fiper. Tüm hakları saklıdır."
+    "copyright": "© 2026 Wtraders. Tüm hakları saklıdır."
   },
   "helpCenter": {
     "backToHome": "Ana Sayfaya Dön",
@@ -198,16 +198,16 @@
     "cat7": "Güvenlik ve Kayıp Kartlar",
     "cat8": "Kargo ve Teslimat",
     "cat9": "Sorun Giderme",
-    "gs_q1": "Fiper Kart nedir?",
-    "gs_a1": "Fiper Kart, Fiper platformundaki hesabınıza bağlı bir ödeme kartıdır. Çevrimiçi ödemeler yapmanıza, Apple Pay ve Google Pay gibi dijital cüzdanları kullanmanıza, ATM kullanmanıza ve trading hesabınız ile kartınız arasında anında fon transferi yapmanıza olanak tanır.",
+    "gs_q1": "Wtraders Kart nedir?",
+    "gs_a1": "Wtraders Kart, Wtraders platformundaki hesabınıza bağlı bir ödeme kartıdır. Çevrimiçi ödemeler yapmanıza, Apple Pay ve Google Pay gibi dijital cüzdanları kullanmanıza, ATM kullanmanıza ve trading hesabınız ile kartınız arasında anında fon transferi yapmanıza olanak tanır.",
     "gs_q2": "Sanal Kart ile Fiziksel Kart arasındaki fark nedir?",
     "gs_a2": "Sanal Kart: Dakikalar içinde aktifleştirilir, Apple Pay ve Google Pay'i destekler, çevrimiçi ödemeler ve dijital cüzdanlar için kullanılabilir. Fiziksel Kart: Adresinize gönderilen plastik bir karttır, mağazalarda ve ATM'lerde kullanılabilir, temassız NFC ödemelerini destekler.",
     "gs_q3": "Kart aktivasyonu ne kadar sürer?",
     "gs_a3": "Kart genellikle talep ve onay süreci tamamlandıktan sonra yaklaşık 5 dakika içinde aktifleştirilir. Fiziksel kartın kayıtlı adresinize gönderilmesi birkaç gün sürer.",
-    "gs_q4": "Fiper Kart bir banka hesabı mıdır?",
-    "gs_a4": "Hayır. Fiper Kart bir banka hesabı değildir. Fiper platformundaki hesabınıza bağlı bir ödeme kartıdır.",
+    "gs_q4": "Wtraders Kart bir banka hesabı mıdır?",
+    "gs_a4": "Hayır. Wtraders Kart bir banka hesabı değildir. Wtraders platformundaki hesabınıza bağlı bir ödeme kartıdır.",
     "gs_q5": "Kart tüm ülkelerde kullanılabilir mi?",
-    "gs_a5": "Kart, coğrafi olarak kısıtlanmış ülkeler hariç tüm Fiper müşterileri için kullanılabilir.",
+    "gs_a5": "Kart, coğrafi olarak kısıtlanmış ülkeler hariç tüm Wtraders müşterileri için kullanılabilir.",
     "vp_q1": "Kart düzenleme ücretleri nedir?",
     "vp_a1": "Sanal Kart: $50 tek seferlik ücret ($30 kart bakiyenize yüklenir, gerçek maliyet $20). Fiziksel Kart: $100 tek seferlik ücret.",
     "vp_q2": "Kart düzenleme ücretleri iade edilir mi?",
@@ -225,19 +225,19 @@
     "vp_q8": "Kart temassız ödemeler için kullanılabilir mi?",
     "vp_a8": "Sanal Kart: Temassız ödemeler için Apple Pay ve Google Pay üzerinden kullanılabilir. Fiziksel Kart: Kart aracılığıyla doğrudan temassız NFC ödemelerini destekler.",
     "tt_q1": "Kartı nasıl yükleyebilirim?",
-    "tt_a1": "Kartı müşteri alanı üzerinden yükleyebilirsiniz: 1) Fiper CRM'e giriş yapın, 2) Fiper Kart bölümüne gidin, 3) Kartı seçin, 4) Karta Para Yatır'a tıklayın, 5) Tutarı girin ve gönderin.",
+    "tt_a1": "Kartı müşteri alanı üzerinden yükleyebilirsiniz: 1) Wtraders CRM'e giriş yapın, 2) Wtraders Kart bölümüne gidin, 3) Kartı seçin, 4) Karta Para Yatır'a tıklayın, 5) Tutarı girin ve gönderin.",
     "tt_q2": "Kart yükleme ücretleri nedir?",
-    "tt_a2": "Fiper hesabınızdan karta yükleme ücreti, yükleme tutarının %1.7'sidir.",
+    "tt_a2": "Wtraders hesabınızdan karta yükleme ücreti, yükleme tutarının %1.7'sidir.",
     "tt_q3": "Parayı karttan hesabıma geri aktarabilir miyim?",
-    "tt_a3": "Evet. Fonları karttan Fiper hesabınıza aktarabilirsiniz: 1) Fiper CRM'e giriş yapın, 2) Fiper Kart bölümüne gidin, 3) Kartı seçin, 4) Karttan Hesaba Çekim'e tıklayın, 5) Tutarı girin ve gönderin. Fiper bu işlem için herhangi bir ücret almaz.",
+    "tt_a3": "Evet. Fonları karttan Wtraders hesabınıza aktarabilirsiniz: 1) Wtraders CRM'e giriş yapın, 2) Wtraders Kart bölümüne gidin, 3) Kartı seçin, 4) Karttan Hesaba Çekim'e tıklayın, 5) Tutarı girin ve gönderin. Wtraders bu işlem için herhangi bir ücret almaz.",
     "tt_q4": "Maksimum yükleme limiti var mı?",
-    "tt_a4": "Fiper hesabınızdan karta maksimum yükleme haftada $2,000'dir. Bu limit yalnızca kart yüklemesi için geçerlidir, kart kullanımı için değil. Örnek: Kartı birkaç hafta boyunca haftada $2,000 yüklerseniz, sorunsuz bir şekilde $4,000 veya daha fazla ödeme yapabilirsiniz.",
+    "tt_a4": "Wtraders hesabınızdan karta maksimum yükleme haftada $2,000'dir. Bu limit yalnızca kart yüklemesi için geçerlidir, kart kullanımı için değil. Örnek: Kartı birkaç hafta boyunca haftada $2,000 yüklerseniz, sorunsuz bir şekilde $4,000 veya daha fazla ödeme yapabilirsiniz.",
     "tt_q5": "Kart haftada birden fazla kez yüklenebilir mi?",
     "tt_a5": "Evet. Haftalık toplam yükleme $2,000'i aşmadığı sürece.",
     "tt_q6": "Fonlar karttan başka bir karta aktarılabilir mi?",
-    "tt_a6": "Hayır. Ancak fonları Fiper trading hesabınıza geri aktarabilir ve ardından P2P transfer özelliğini kullanarak başka bir müşteriye gönderebilirsiniz.",
+    "tt_a6": "Hayır. Ancak fonları Wtraders trading hesabınıza geri aktarabilir ve ardından P2P transfer özelliğini kullanarak başka bir müşteriye gönderebilirsiniz.",
     "tt_q7": "Kart fon alabilir mi?",
-    "tt_a7": "Hayır. Kart doğrudan fon alamaz. Ancak fonlar P2P transferleri aracılığıyla Fiper trading hesabınıza alınabilir.",
+    "tt_a7": "Hayır. Kart doğrudan fon alamaz. Ancak fonlar P2P transferleri aracılığıyla Wtraders trading hesabınıza alınabilir.",
     "fl_q1": "İşlem ücretleri nedir?",
     "fl_a1": "İşlem türüne ve ödeme para birimine bağlı olarak her işleme $0.30 – $0.40 arası sabit bir ücret uygulanır. Bu ücret işlem tutarından bağımsız olarak geçerlidir ($1 da ödeseniz $1,000 da).",
     "fl_q2": "Döviz kuru nasıl hesaplanır?",
@@ -275,13 +275,13 @@
     "aw_q1": "Kart ATM'lerden nakit çekim için kullanılabilir mi?",
     "aw_a1": "Evet. Fiziksel kart ATM'lerden nakit çekimi için kullanılabilir.",
     "aw_q2": "ATM çekim ücretleri var mı?",
-    "aw_a2": "Fiper ATM çekim ücretleri almaz. Ancak kart ülkenizin dışından düzenlenmiştir, bu nedenle kartı ülkenizde kullanmak uluslararası kart işlemi olarak sınıflandırılabilir. Bu nedenle, yerel banka veya ATM operatörü kendi ücretlerini uygulayabilir.",
+    "aw_a2": "Wtraders ATM çekim ücretleri almaz. Ancak kart ülkenizin dışından düzenlenmiştir, bu nedenle kartı ülkenizde kullanmak uluslararası kart işlemi olarak sınıflandırılabilir. Bu nedenle, yerel banka veya ATM operatörü kendi ücretlerini uygulayabilir.",
     "sl_q1": "Kartımı kaybedersem ne yapmalıyım?",
     "sl_a1": "İlk adım, kart kontrol panelinize giriş yapmak ve \"Kartı Dondur\" seçeneğini kullanarak kartı dondurmaktır. Bundan sonra, daha fazla yardım için bir Destek Talebi oluşturarak desteğe başvurabilirsiniz.",
     "sl_q2": "Kart kaybolursa değiştirilebilir mi?",
     "sl_a2": "Kartı dondurduktan sonra bir destek talebi açabilirsiniz ve size şu konularda rehberlik edilecektir: kart değiştirme prosedürü ve varsa yeni karta ilişkin düzenleme veya kargo ücretleri.",
     "sl_q3": "Çevrimiçi ödemeler sırasında kart bilgilerim çalınabilir mi?",
-    "sl_a3": "Bu, ödemenin yapıldığı web sitesinin güvenlik düzeyine bağlıdır ve Fiper'ın kontrolü dışındadır.",
+    "sl_a3": "Bu, ödemenin yapıldığı web sitesinin güvenlik düzeyine bağlıdır ve Wtraders'ın kontrolü dışındadır.",
     "sl_q4": "Kartım izinsiz kullanılırsa ne yapmalıyım?",
     "sl_a4": "Müşteri alanından kartı hemen dondurun ve soruşturma için bir destek talebi açın.",
     "sl_q5": "Kartı geçici olarak devre dışı bırakabilir miyim?",
@@ -307,6 +307,6 @@
     "ts_q4": "Kart kalıcı olarak iptal edilebilir mi?",
     "ts_a4": "Evet. Bir destek talebi açabilir ve belirli kartın iptalini isteyebilirsiniz.",
     "ts_q5": "Kart iptal edilirse bakiyeye ne olur?",
-    "ts_a5": "Kalan bakiye istediğiniz zaman ücretsiz olarak Fiper trading hesabınıza iade edilebilir."
+    "ts_a5": "Kalan bakiye istediğiniz zaman ücretsiz olarak Wtraders trading hesabınıza iade edilebilir."
   }
 }

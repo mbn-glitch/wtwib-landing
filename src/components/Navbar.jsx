@@ -56,10 +56,10 @@ export default function Navbar() {
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="flex items-center justify-between py-6">
-          <a href="#home" className="flex-shrink-0" aria-label="Fiper — go to top">
+          <a href="#home" className="flex-shrink-0" aria-label="Wtraders — go to top">
             <img
-              src="/Fiper_Logo_white2.png"
-              alt="Fiper"
+              src="/wtraders-logo.png"
+              alt="Wtraders"
               className="h-24 md:h-28 w-auto object-contain"
             />
           </a>
@@ -95,10 +95,10 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center gap-3">
             <LanguageSwitcher />
             <a
-              href="https://crm.fiper.me"
+              href="https://crm.wtradersworld.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-fiper px-6 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-fiper-dark hover:shadow-lg hover:shadow-red-500/20"
+              className="inline-flex items-center gap-2 rounded-full bg-fiper px-6 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-fiper-dark hover:shadow-lg hover:shadow-amber-500/20"
             >
               {t("nav.getYourCard")}
             </a>
@@ -154,7 +154,7 @@ export default function Navbar() {
               <div className="pt-4 space-y-3">
                 <LanguageSwitcher className="w-full justify-center" />
                 <a
-                  href="https://crm.fiper.me"
+                  href="https://crm.wtradersworld.com"
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setMobileOpen(false)}

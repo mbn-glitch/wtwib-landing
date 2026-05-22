@@ -1,8 +1,9 @@
 {
-  "name": "my-landing-page",
+  "name": "wtraders-card-landing",
   "private": true,
   "version": "1.0.0",
   "type": "module",
+  "description": "Wtraders Card landing page — turn trading profits into real purchasing power.",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

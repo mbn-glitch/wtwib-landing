@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { Check, X, ArrowRight, Star } from "lucide-react";
-import FiperCard3D from "./FiperCard3D";
+import WtradersCard3D from "./WtradersCard3D";
 
 export default function ChooseCard() {
   const { t } = useTranslation();
@@ -60,7 +60,7 @@ export default function ChooseCard() {
 
   return (
     <section id="cards" className="relative py-24 md:py-32 overflow-hidden">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full bg-red-500/[0.03] blur-[200px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full bg-amber-500/[0.03] blur-[200px] pointer-events-none" />
       <div className="relative mx-auto max-w-7xl px-6">
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.7 }} className="text-center mb-16 md:mb-20">
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-fiper mb-4">{t("chooseCard.label")}</p>
@@ -86,7 +86,7 @@ export default function ChooseCard() {
               animate={plan.premium ? { y: [-3, 3, -3] } : {}}
               {...(plan.premium && { transition: { y: { duration: 5, repeat: Infinity, ease: "easeInOut" }, default: { duration: 0.7, delay: idx * 0.15 } } })}
               style={plan.premium ? { transform: "scale(1.03)" } : undefined}
-              className={`relative rounded-3xl overflow-hidden transition-all duration-500 ${plan.premium ? "border-2 border-fiper/60 bg-gradient-to-b from-red-500/[0.10] to-transparent hover:border-fiper hover:shadow-[0_0_60px_-10px_rgba(220,38,38,0.5)] shadow-[0_0_40px_-15px_rgba(220,38,38,0.3)]" : plan.popular ? "border border-white/[0.08] bg-white/[0.015] hover:border-white/[0.15]" : "border border-white/[0.06] bg-white/[0.02] hover:border-red-500/30"}`}
+              className={`relative rounded-3xl overflow-hidden transition-all duration-500 ${plan.premium ? "border-2 border-fiper/60 bg-gradient-to-b from-amber-500/[0.10] to-transparent hover:border-fiper hover:shadow-[0_0_60px_-10px_rgba(201,169,97,0.5)] shadow-[0_0_40px_-15px_rgba(201,169,97,0.3)]" : plan.popular ? "border border-white/[0.08] bg-white/[0.015] hover:border-white/[0.15]" : "border border-white/[0.06] bg-white/[0.02] hover:border-amber-500/30"}`}
             >
               {plan.premium && <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-fiper to-transparent" />}
               {plan.popular && (
@@ -99,7 +99,7 @@ export default function ChooseCard() {
               )}
               {plan.premium && (
                 <div className="absolute top-5 end-5 z-10">
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-red-600 to-red-500 px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-wider text-white shadow-lg shadow-red-500/30">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-amber-600 to-amber-500 px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-wider text-white shadow-lg shadow-amber-500/30">
                     <Star size={12} fill="currentColor" />
                     {t("chooseCard.premiumChoice")}
                   </span>
@@ -108,7 +108,7 @@ export default function ChooseCard() {
               <div className="p-8 lg:p-10">
                 <span className="inline-block rounded-full bg-white/5 border border-white/10 px-3 py-1 text-xs text-zinc-400 mb-6">{plan.badge}</span>
                 <div className="flex justify-center mb-8 scale-[0.75] origin-center sm:scale-[0.85]">
-                  <FiperCard3D variant={plan.variant} />
+                  <WtradersCard3D variant={plan.variant} />
                 </div>
                 <div className="flex items-baseline justify-between mb-8">
                   <h3 className="text-2xl font-bold">{plan.name}</h3>
@@ -160,8 +160,8 @@ export default function ChooseCard() {
                     ))}
                   </div>
                 </div>
-                <a href="https://crm.fiper.me" target="_blank" rel="noopener noreferrer"
-                  className={`group flex w-full items-center justify-center gap-2 rounded-full py-4 text-sm font-semibold transition-all duration-300 ${plan.premium ? "bg-fiper text-white hover:bg-fiper-dark hover:shadow-lg hover:shadow-red-500/25" : "bg-white/5 border border-white/10 text-white hover:bg-white/10"}`}>
+                <a href="https://crm.wtradersworld.com" target="_blank" rel="noopener noreferrer"
+                  className={`group flex w-full items-center justify-center gap-2 rounded-full py-4 text-sm font-semibold transition-all duration-300 ${plan.premium ? "bg-fiper text-white hover:bg-fiper-dark hover:shadow-lg hover:shadow-amber-500/25" : "bg-white/5 border border-white/10 text-white hover:bg-white/10"}`}>
                   {plan.cta}
                   <ArrowRight size={16} className="transition-transform group-hover:translate-x-1 rtl-flip" />
                 </a>

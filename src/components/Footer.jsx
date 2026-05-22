@@ -9,10 +9,10 @@ const LIIcon = () => (<svg viewBox="0 0 24 24" fill="currentColor" className="w-
 const YTIcon = () => (<svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>);
 
 const socials = [
-  { label: "X", icon: XIcon, href: "https://linktr.ee/fiper" },
-  { label: "Instagram", icon: IGIcon, href: "https://linktr.ee/fiper" },
-  { label: "LinkedIn", icon: LIIcon, href: "https://linktr.ee/fiper" },
-  { label: "YouTube", icon: YTIcon, href: "https://linktr.ee/fiper" },
+  { label: "X", icon: XIcon, href: "https://linktr.ee/wtraders" },
+  { label: "Instagram", icon: IGIcon, href: "https://linktr.ee/wtraders" },
+  { label: "LinkedIn", icon: LIIcon, href: "https://linktr.ee/wtraders" },
+  { label: "YouTube", icon: YTIcon, href: "https://linktr.ee/wtraders" },
 ];
 
 export default function Footer() {
@@ -27,8 +27,8 @@ export default function Footer() {
       return;
     }
     setSubmitState("submitting");
-    const message = encodeURIComponent(`Hi! Please add me to the Fiper Card newsletter. Email: ${emailValue}`);
-    window.open(`https://wa.me/971561111855?text=${message}`, "_blank", "noopener");
+    const message = encodeURIComponent(`Hi! Please add me to the Wtraders Card newsletter. Email: ${emailValue}`);
+    window.open(`https://wa.me/971568010724?text=${message}`, "_blank", "noopener");
     setTimeout(() => {
       setSubmitState("success");
       setEmailValue("");
@@ -65,7 +65,7 @@ export default function Footer() {
               <button
                 type="submit"
                 disabled={submitState === "submitting"}
-                className="group inline-flex items-center justify-center gap-2 rounded-full bg-fiper px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-fiper-dark hover:shadow-lg hover:shadow-red-500/20 disabled:opacity-60"
+                className="group inline-flex items-center justify-center gap-2 rounded-full bg-fiper px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-fiper-dark hover:shadow-lg hover:shadow-amber-500/20 disabled:opacity-60"
               >
                 {submitState === "submitting" ? "..." : t("footer.subscribe")}
                 <ArrowRight size={14} className="transition-transform group-hover:translate-x-0.5 rtl-flip" />
@@ -82,7 +82,7 @@ export default function Footer() {
 
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
           <div>
-            <a href="#home"><img src="/Fiper_Logo_white2.png" alt="Fiper" loading="lazy" decoding="async" className="h-20 w-auto object-contain" /></a>
+            <a href="#home"><img src="/wtraders-logo.png" alt="Wtraders" loading="lazy" decoding="async" className="h-20 w-auto object-contain" /></a>
             <p className="mt-4 text-sm leading-relaxed text-zinc-500">{t("footer.tagline")}</p>
             <div className="mt-6 flex items-center gap-3">
               {socials.map((s) => (
@@ -110,7 +110,7 @@ export default function Footer() {
             <h4 className="text-sm font-semibold uppercase tracking-wider text-white mb-4">{t("footer.legal")}</h4>
             <ul className="space-y-3">
               {[t("footer.terms"), t("footer.privacy"), t("footer.cookie"), t("footer.refund")].map((label) => (
-                <li key={label}><a href="https://fiper.me/legal-documentation" target="_blank" rel="noopener noreferrer" className="text-sm text-zinc-500 transition-colors duration-200 hover:text-white">{label}</a></li>
+                <li key={label}><a href="https://wtradersworld.com/legal-documentation" target="_blank" rel="noopener noreferrer" className="text-sm text-zinc-500 transition-colors duration-200 hover:text-white">{label}</a></li>
               ))}
             </ul>
           </div>

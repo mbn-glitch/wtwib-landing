@@ -1,11 +1,11 @@
 {
-  "name": "Fiper Card",
-  "short_name": "Fiper",
+  "name": "Wtraders Card",
+  "short_name": "Wtraders",
   "description": "Turn your trading profits into real purchasing power in minutes.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#000000",
-  "theme_color": "#DC2626",
+  "theme_color": "#C9A961",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",

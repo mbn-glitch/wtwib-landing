@@ -12,9 +12,9 @@ function AnimatedConnectingLine() {
   return (
     <div ref={ref} className="hidden lg:block absolute top-[60px] left-[16.67%] right-[16.67%] h-[2px]">
       <svg className="w-full h-full overflow-visible" preserveAspectRatio="none">
-        <defs><linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stopColor="#DC2626" stopOpacity="0.6" /><stop offset="50%" stopColor="#DC2626" stopOpacity="0.2" /><stop offset="100%" stopColor="#DC2626" stopOpacity="0.6" /></linearGradient></defs>
+        <defs><linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stopColor="#C9A961" stopOpacity="0.6" /><stop offset="50%" stopColor="#C9A961" stopOpacity="0.2" /><stop offset="100%" stopColor="#C9A961" stopOpacity="0.6" /></linearGradient></defs>
         <motion.line x1="0" y1="1" x2="100%" y2="1" stroke="url(#lineGrad)" strokeWidth="2" strokeLinecap="round" initial={{ pathLength: 0, opacity: 0 }} animate={isInView ? { pathLength: 1, opacity: 1 } : {}} transition={{ duration: 1.5, delay: 0.3, ease: [0.16, 1, 0.3, 1] }} />
-        <motion.circle r="4" fill="#DC2626" initial={{ cx: "0%", cy: 1, opacity: 0 }} animate={isInView ? { cx: ["0%", "100%"], opacity: [0, 1, 1, 0] } : {}} transition={{ duration: 2, delay: 0.5, ease: "easeInOut" }} />
+        <motion.circle r="4" fill="#C9A961" initial={{ cx: "0%", cy: 1, opacity: 0 }} animate={isInView ? { cx: ["0%", "100%"], opacity: [0, 1, 1, 0] } : {}} transition={{ duration: 2, delay: 0.5, ease: "easeInOut" }} />
       </svg>
     </div>
   );
@@ -39,7 +39,7 @@ export default function HowItWorks() {
             const Icon = icons[i];
             return (
               <motion.div key={key} initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.7, delay: i * 0.2, ease: [0.16, 1, 0.3, 1] }} whileHover="hover" className="relative text-center group">
-                <motion.div className="mx-auto mb-6 flex h-[72px] w-[72px] items-center justify-center rounded-2xl bg-fiper/15 border border-fiper/40 shadow-lg shadow-red-500/10" variants={{ hover: { scale: 1.1, transition: { duration: 0.3 } } }}>
+                <motion.div className="mx-auto mb-6 flex h-[72px] w-[72px] items-center justify-center rounded-2xl bg-fiper/15 border border-fiper/40 shadow-lg shadow-amber-500/10" variants={{ hover: { scale: 1.1, transition: { duration: 0.3 } } }}>
                   <span className="text-2xl font-bold text-white">{String(i + 1).padStart(2, "0")}</span>
                 </motion.div>
                 <motion.div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-white/5" variants={{ hover: { y: [-2, 2, -2], transition: { duration: 0.6, repeat: Infinity, ease: "easeInOut" } } }}>
@@ -53,7 +53,7 @@ export default function HowItWorks() {
         </div>
 
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.7, delay: 0.6 }} className="mt-16 text-center">
-          <a href="https://crm.fiper.me" target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 rounded-full bg-fiper px-8 py-4 text-sm font-semibold text-white transition-all duration-300 hover:bg-fiper-dark hover:shadow-xl hover:shadow-red-500/25 hover:scale-[1.02]">
+          <a href="https://crm.wtradersworld.com" target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 rounded-full bg-fiper px-8 py-4 text-sm font-semibold text-white transition-all duration-300 hover:bg-fiper-dark hover:shadow-xl hover:shadow-amber-500/25 hover:scale-[1.02]">
             {t("howItWorks.cta")}
             <ArrowRight size={16} className="transition-transform group-hover:translate-x-1 rtl-flip" />
           </a>

@@ -27,7 +27,7 @@ export default function StickyMobileCTA() {
     >
       <div className="px-4 py-3 bg-black/85 backdrop-blur-xl border-t border-white/10">
         <a
-          href="https://crm.fiper.me"
+          href="https://crm.wtradersworld.com"
           target="_blank"
           rel="noopener noreferrer"
           className="group flex items-center justify-center gap-2 w-full rounded-full bg-fiper px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-fiper/30"

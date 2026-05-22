@@ -29,8 +29,8 @@
   "trustStrip": {
     "title": "Approuvé par les traders sur les principales plateformes"
   },
-  "whyFiper": {
-    "label": "Pourquoi Fiper Card",
+  "whyWtraders": {
+    "label": "Pourquoi Wtraders Card",
     "heading1": "Tout ce dont vous avez besoin.",
     "heading2": "Rien d'inutile.",
     "f1Title": "Activation instantanée",
@@ -62,8 +62,8 @@
     "atmAccess": "Limite de recharge",
     "validity": "Validité",
     "threeYears": "3 ans",
-    "virtualCta": "Obtenez votre Fiper Card",
-    "physicalCta": "Obtenez votre Fiper Card",
+    "virtualCta": "Obtenez votre Wtraders Card",
+    "physicalCta": "Obtenez votre Wtraders Card",
     "vf1": "Activation en 5 minutes",
     "vf2": "Apple Pay pris en charge",
     "vf3": "Google Pay pris en charge",
@@ -93,13 +93,13 @@
     "label": "Comment ça marche",
     "heading1": "Opérationnel",
     "heading2": "en trois étapes simples.",
-    "step1Title": "Ouvrez votre compte Fiper",
+    "step1Title": "Ouvrez votre compte Wtraders",
     "step1Desc": "Créez votre compte en quelques minutes et commencez à gérer vos fonds depuis un tableau de bord unifié.",
     "step2Title": "Commandez votre carte",
     "step2Desc": "Choisissez entre Virtuelle ou Physique, payez les frais d'émission uniques, et c'est fait.",
     "step3Title": "Commencez à dépenser immédiatement",
     "step3Desc": "Utilisez votre Carte Virtuelle instantanément en ligne, ou attendez l'arrivée de votre Carte Physique et retirez dans le monde entier.",
-    "cta": "Obtenez votre Fiper Card"
+    "cta": "Obtenez votre Wtraders Card"
   },
   "trustSecurity": {
     "label": "Confiance et Sécurité",
@@ -119,20 +119,20 @@
     "heading1": "Quatre raisons.",
     "heading2": "Une seule conclusion.",
     "r1Title": "Lien direct avec votre compte de trading",
-    "r1Desc": "Votre carte Fiper se connecte directement à votre compte de trading — transformez vos bénéfices en pouvoir d'achat en quelques minutes, sans intermédiaires ni étapes supplémentaires.",
+    "r1Desc": "Votre carte Wtraders se connecte directement à votre compte de trading — transformez vos bénéfices en pouvoir d'achat en quelques minutes, sans intermédiaires ni étapes supplémentaires.",
     "r2Title": "Activation instantanée — Opérationnelle en 5 minutes",
     "r2Desc": "Carte virtuelle activée en 5 minutes. Carte physique prête en 5 à 10 minutes. Commencez à dépenser le jour même de votre inscription — aucun retard, aucune bureaucratie.",
     "r3Title": "Prêt pour Apple Pay & Google Pay",
     "r3Desc": "Ajoutez votre Carte Virtuelle au portefeuille de votre téléphone instantanément. Payez d'un simple geste partout dans le monde — vos bénéfices, désormais littéralement dans votre poche.",
     "r4Title": "Aucun frais mensuel — Jamais",
     "r4Desc": "Payez une seule fois pour émettre votre carte. Aucun frais mensuel, aucun frais caché, aucun abonnement. Juste 1,7% de recharge et $0,40 par transaction — entièrement transparent.",
-    "cta": "Obtenez votre Fiper Card"
+    "cta": "Obtenez votre Wtraders Card"
   },
   "faq": {
     "label": "FAQ",
     "heading1": "Des questions ?",
     "heading2": "Des réponses.",
-    "subtext": "Tout ce que vous devez savoir sur Fiper Card.",
+    "subtext": "Tout ce que vous devez savoir sur Wtraders Card.",
     "viewAll": "Voir toutes les FAQ",
     "q1": "Combien de temps prend l'activation de la carte ?",
     "a1": "Carte Virtuelle : en 5 minutes. Carte Physique : 5 à 10 minutes après la commande. Vous pouvez commencer à utiliser votre Carte Virtuelle immédiatement après l'activation.",
@@ -142,16 +142,16 @@
     "a3": "La livraison de la Carte Physique prend généralement 1 à 2 semaines selon votre emplacement. Vous recevrez les informations de suivi une fois votre carte expédiée.",
     "q4": "Puis-je geler ma carte ?",
     "a4": "Oui, vous pouvez instantanément geler et dégeler votre carte depuis votre tableau de bord en un clic. Cela vous offre un contrôle total sur la sécurité de votre carte à tout moment.",
-    "q5": "Ai-je besoin d'un compte Fiper pour obtenir une carte ?",
-    "a5": "Oui, vous devez d'abord créer un compte Fiper pour commander et gérer votre carte. La création du compte ne prend que quelques minutes.",
+    "q5": "Ai-je besoin d'un compte Wtraders pour obtenir une carte ?",
+    "a5": "Oui, vous devez d'abord créer un compte Wtraders pour commander et gérer votre carte. La création du compte ne prend que quelques minutes.",
     "q6": "Qui détermine le taux de change ?",
     "a6": "Le taux de change est déterminé par l'émetteur de la carte sur la base des taux de marché en vigueur. Les taux sont appliqués au moment de la transaction."
   },
   "finalCta": {
     "heading1": "Tradez. Retirez.",
     "heading2": "Profitez.",
-    "subtext": "Vos bénéfices ne sont plus seulement des chiffres sur un écran. Avec la Fiper Card, ils deviennent un véritable pouvoir d'achat — en quelques minutes.",
-    "cta": "Obtenez votre Fiper Card"
+    "subtext": "Vos bénéfices ne sont plus seulement des chiffres sur un écran. Avec la Wtraders Card, ils deviennent un véritable pouvoir d'achat — en quelques minutes.",
+    "cta": "Obtenez votre Wtraders Card"
   },
   "footer": {
     "tagline": "Transformez les bénéfices de trading en pouvoir d'achat réel.",
@@ -165,7 +165,7 @@
     "privacy": "Politique de confidentialité",
     "cookie": "Politique des cookies",
     "refund": "Politique de remboursement",
-    "copyright": "© 2026 Fiper. Tous droits réservés."
+    "copyright": "© 2026 Wtraders. Tous droits réservés."
   },
   "helpCenter": {
     "backToHome": "Retour à l'accueil",
@@ -198,16 +198,16 @@
     "cat7": "Sécurité et Cartes Perdues",
     "cat8": "Expédition et Livraison",
     "cat9": "Dépannage",
-    "gs_q1": "Qu'est-ce que la Fiper Card ?",
-    "gs_a1": "La Fiper Card est une carte de paiement liée à votre compte sur la plateforme Fiper. Elle vous permet de faire des paiements en ligne, d'utiliser des portefeuilles numériques tels qu'Apple Pay et Google Pay, d'utiliser des DAB, et de transférer des fonds facilement entre votre compte de trading et la carte instantanément.",
+    "gs_q1": "Qu'est-ce que la Wtraders Card ?",
+    "gs_a1": "La Wtraders Card est une carte de paiement liée à votre compte sur la plateforme Wtraders. Elle vous permet de faire des paiements en ligne, d'utiliser des portefeuilles numériques tels qu'Apple Pay et Google Pay, d'utiliser des DAB, et de transférer des fonds facilement entre votre compte de trading et la carte instantanément.",
     "gs_q2": "Quelle est la différence entre la Carte Virtuelle et la Carte Physique ?",
     "gs_a2": "Carte Virtuelle : Activée en quelques minutes, prend en charge Apple Pay et Google Pay, peut être utilisée pour les paiements en ligne et les portefeuilles numériques. Carte Physique : Une carte en plastique expédiée à votre adresse, peut être utilisée dans les magasins et aux DAB, prend en charge les paiements NFC sans contact.",
     "gs_q3": "Combien de temps prend l'activation de la carte ?",
     "gs_a3": "La carte est généralement activée en environ 5 minutes après la fin du processus de demande et d'approbation. La carte physique nécessite plusieurs jours pour être expédiée à votre adresse enregistrée.",
-    "gs_q4": "La Fiper Card est-elle un compte bancaire ?",
-    "gs_a4": "Non. La Fiper Card n'est pas un compte bancaire. C'est une carte de paiement liée à votre compte sur la plateforme Fiper.",
+    "gs_q4": "La Wtraders Card est-elle un compte bancaire ?",
+    "gs_a4": "Non. La Wtraders Card n'est pas un compte bancaire. C'est une carte de paiement liée à votre compte sur la plateforme Wtraders.",
     "gs_q5": "La carte est-elle disponible dans tous les pays ?",
-    "gs_a5": "La carte est disponible pour tous les clients Fiper, à l'exception des pays géographiquement restreints.",
+    "gs_a5": "La carte est disponible pour tous les clients Wtraders, à l'exception des pays géographiquement restreints.",
     "vp_q1": "Quels sont les frais d'émission de la carte ?",
     "vp_a1": "Carte Virtuelle : $50 de frais uniques ($30 chargés sur le solde de votre carte, coût réel $20). Carte Physique : $100 de frais uniques.",
     "vp_q2": "Les frais d'émission de la carte sont-ils remboursables ?",
@@ -225,19 +225,19 @@
     "vp_q8": "La carte peut-elle être utilisée pour les paiements sans contact ?",
     "vp_a8": "Carte Virtuelle : Peut être utilisée via Apple Pay et Google Pay pour les paiements sans contact. Carte Physique : Prend en charge les paiements NFC sans contact directement via la carte.",
     "tt_q1": "Comment puis-je recharger la carte ?",
-    "tt_a1": "Vous pouvez recharger la carte via l'espace client : 1) Connectez-vous à Fiper CRM, 2) Allez à la section Fiper Card, 3) Choisissez la carte, 4) Cliquez sur Dépôt sur la carte, 5) Entrez le montant et soumettez.",
+    "tt_a1": "Vous pouvez recharger la carte via l'espace client : 1) Connectez-vous à Wtraders CRM, 2) Allez à la section Wtraders Card, 3) Choisissez la carte, 4) Cliquez sur Dépôt sur la carte, 5) Entrez le montant et soumettez.",
     "tt_q2": "Quels sont les frais de recharge de la carte ?",
-    "tt_a2": "Les frais de recharge de votre compte Fiper à la carte sont de 1,7% du montant de la recharge.",
+    "tt_a2": "Les frais de recharge de votre compte Wtraders à la carte sont de 1,7% du montant de la recharge.",
     "tt_q3": "Puis-je transférer de l'argent de la carte vers mon compte ?",
-    "tt_a3": "Oui. Vous pouvez transférer des fonds de la carte vers votre compte Fiper : 1) Connectez-vous à Fiper CRM, 2) Allez à la section Fiper Card, 3) Choisissez la carte, 4) Cliquez sur Retrait de la carte vers le compte, 5) Entrez le montant et soumettez. Fiper ne facture aucun frais pour cette opération.",
+    "tt_a3": "Oui. Vous pouvez transférer des fonds de la carte vers votre compte Wtraders : 1) Connectez-vous à Wtraders CRM, 2) Allez à la section Wtraders Card, 3) Choisissez la carte, 4) Cliquez sur Retrait de la carte vers le compte, 5) Entrez le montant et soumettez. Wtraders ne facture aucun frais pour cette opération.",
     "tt_q4": "Y a-t-il une limite de recharge maximale ?",
-    "tt_a4": "La recharge maximale de votre compte Fiper à la carte est de $2 000 par semaine. Cette limite s'applique uniquement au chargement de la carte, pas à son utilisation. Exemple : Si vous chargez la carte avec $2 000 par semaine pendant plusieurs semaines, vous pouvez effectuer un paiement de $4 000 ou plus sans aucun problème.",
+    "tt_a4": "La recharge maximale de votre compte Wtraders à la carte est de $2 000 par semaine. Cette limite s'applique uniquement au chargement de la carte, pas à son utilisation. Exemple : Si vous chargez la carte avec $2 000 par semaine pendant plusieurs semaines, vous pouvez effectuer un paiement de $4 000 ou plus sans aucun problème.",
     "tt_q5": "La carte peut-elle être rechargée plusieurs fois par semaine ?",
     "tt_a5": "Oui. Tant que la recharge hebdomadaire totale ne dépasse pas $2 000.",
     "tt_q6": "Les fonds peuvent-ils être transférés de la carte à une autre carte ?",
-    "tt_a6": "Non. Cependant, vous pouvez transférer les fonds vers votre compte de trading Fiper puis les envoyer à un autre client en utilisant la fonction de transfert P2P.",
+    "tt_a6": "Non. Cependant, vous pouvez transférer les fonds vers votre compte de trading Wtraders puis les envoyer à un autre client en utilisant la fonction de transfert P2P.",
     "tt_q7": "La carte peut-elle recevoir des fonds ?",
-    "tt_a7": "Non. La carte ne peut pas recevoir des fonds directement. Cependant, les fonds peuvent être reçus sur votre compte de trading Fiper via des transferts P2P.",
+    "tt_a7": "Non. La carte ne peut pas recevoir des fonds directement. Cependant, les fonds peuvent être reçus sur votre compte de trading Wtraders via des transferts P2P.",
     "fl_q1": "Quels sont les frais de transaction ?",
     "fl_a1": "Des frais fixes sont appliqués à chaque transaction, allant de $0,30 à $0,40 par transaction, selon le type de transaction et la devise de paiement. Ces frais s'appliquent quel que soit le montant de la transaction (que vous payiez $1 ou $1 000).",
     "fl_q2": "Comment le taux de change est-il calculé ?",
@@ -275,13 +275,13 @@
     "aw_q1": "La carte peut-elle être utilisée pour retirer de l'argent aux DAB ?",
     "aw_a1": "Oui. La carte physique peut être utilisée pour retirer de l'argent aux DAB.",
     "aw_q2": "Y a-t-il des frais de retrait aux DAB ?",
-    "aw_a2": "Fiper ne facture pas de frais de retrait aux DAB. Cependant, veuillez noter que la carte est émise depuis l'extérieur de votre pays, donc l'utilisation de la carte dans votre pays peut être classée comme une transaction par carte internationale. Par conséquent, la banque locale ou l'opérateur de DAB peut appliquer ses propres frais.",
+    "aw_a2": "Wtraders ne facture pas de frais de retrait aux DAB. Cependant, veuillez noter que la carte est émise depuis l'extérieur de votre pays, donc l'utilisation de la carte dans votre pays peut être classée comme une transaction par carte internationale. Par conséquent, la banque locale ou l'opérateur de DAB peut appliquer ses propres frais.",
     "sl_q1": "Que dois-je faire si je perds ma carte ?",
     "sl_a1": "La première étape consiste à vous connecter au tableau de bord de votre carte et à geler la carte en utilisant l'option « Geler la carte ». Après cela, vous pouvez contacter le support en créant un ticket de support pour une assistance supplémentaire.",
     "sl_q2": "La carte peut-elle être remplacée si elle est perdue ?",
     "sl_a2": "Après avoir gelé la carte, vous pouvez ouvrir un ticket de support et vous serez guidé à travers : la procédure de remplacement de la carte et tous les frais d'émission ou d'expédition relatifs à la nouvelle carte, le cas échéant.",
     "sl_q3": "Les détails de ma carte peuvent-ils être volés lors des paiements en ligne ?",
-    "sl_a3": "Cela dépend du niveau de sécurité du site Web où le paiement est effectué, ce qui est hors du contrôle de Fiper.",
+    "sl_a3": "Cela dépend du niveau de sécurité du site Web où le paiement est effectué, ce qui est hors du contrôle de Wtraders.",
     "sl_q4": "Que dois-je faire si ma carte est utilisée sans mon autorisation ?",
     "sl_a4": "Gelez immédiatement la carte depuis votre espace client et ouvrez un ticket de support pour enquête.",
     "sl_q5": "Puis-je désactiver temporairement la carte ?",
@@ -307,6 +307,6 @@
     "ts_q4": "La carte peut-elle être annulée définitivement ?",
     "ts_a4": "Oui. Vous pouvez ouvrir un ticket de support et demander l'annulation de la carte spécifique.",
     "ts_q5": "Qu'advient-il du solde si la carte est annulée ?",
-    "ts_a5": "Le solde restant peut être reversé sur votre compte de trading Fiper à tout moment sans frais."
+    "ts_a5": "Le solde restant peut être reversé sur votre compte de trading Wtraders à tout moment sans frais."
   }
 }

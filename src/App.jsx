@@ -4,7 +4,7 @@ import ScrollProgress from "./components/ScrollProgress";
 import WhatsAppButton from "./components/WhatsAppButton";
 import StickyMobileCTA from "./components/StickyMobileCTA";
 import Hero from "./components/Hero";
-import WhyFiper from "./components/WhyFiper";
+import WhyWtraders from "./components/WhyWtraders";
 import ChooseCard from "./components/ChooseCard";
 import HowItWorks from "./components/HowItWorks";
 import TrustSecurity from "./components/TrustSecurity";
@@ -23,7 +23,7 @@ function App() {
       <Navbar />
       <main>
         <Hero />
-        <div className="cv-auto"><WhyFiper /></div>
+        <div className="cv-auto"><WhyWtraders /></div>
         <div className="cv-auto"><ChooseCard /></div>
         <div className="cv-auto"><HowItWorks /></div>
         <div className="cv-auto"><TrustSecurity /></div>

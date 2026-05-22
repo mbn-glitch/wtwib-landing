@@ -2,8 +2,8 @@
 
 @theme {
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
-  --color-fiper: #DC2626;
-  --color-fiper-dark: #B91C1C;
+  --color-fiper: #C9A961;
+  --color-fiper-dark: #A88A3F;
 }
 
 html,
@@ -61,7 +61,7 @@ body {
 
 /* Gradient text */
 .text-gradient-red {
-  background: linear-gradient(135deg, #DC2626 0%, #F87171 50%, #DC2626 100%);
+  background: linear-gradient(135deg, #C9A961 0%, #E5D08C 50%, #C9A961 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -106,8 +106,8 @@ body {
   background: #555;
 }
 
-/* Fiper logo safety — prevent any framework override */
-img[src*="Fiper_Logo"] {
+/* Wtraders logo safety — prevent any framework override */
+img[src*="wtraders-logo"] {
   filter: none !important;
   opacity: 1 !important;
   max-width: none !important;
@@ -184,7 +184,7 @@ img[src*="Fiper_Logo"] {
   left: 16px;
   z-index: 100;
   padding: 12px 20px;
-  background: #DC2626;
+  background: #C9A961;
   color: white;
   border-radius: 8px;
   font-weight: 600;
