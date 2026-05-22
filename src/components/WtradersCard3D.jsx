@@ -27,7 +27,7 @@ export default function WtradersCard3D({ variant = "virtual" }) {
             loading="eager"
             fetchPriority="high"
             decoding="async"
-            className="w-full h-full object-contain select-none pointer-events-none"
+            className="w-full h-full object-cover select-none pointer-events-none"
             draggable={false}
           />
         </div>
