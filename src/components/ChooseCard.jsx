@@ -8,7 +8,7 @@ export default function ChooseCard() {
 
   // PRICING MODEL — confirmed with operations
   // Virtual Card: $50 issuing fee → $30 loaded to card balance → $20 actual cost
-  // Physical Card: $100 issuing fee (no balance loaded)
+  // Physical Card: $299 issuing fee (no balance loaded)
   // These values MUST match helpCenter.vp_a1 in src/locales/*.json.
   const plans = [
     {
@@ -35,7 +35,7 @@ export default function ChooseCard() {
     },
     {
       name: t("chooseCard.physicalCard"),
-      price: "$100",
+      price: "$299",
       badge: t("chooseCard.physicalBadge"),
       variant: "physical",
       cta: t("chooseCard.physicalCta"),
