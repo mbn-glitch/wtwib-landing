@@ -41,16 +41,16 @@ export default function Footer() {
   ];
 
   const companyLinks = [
-    { label: "About", href: "#" },
-    { label: "Contact", href: "#" },
-    { label: "Careers", href: "#" },
+    { label: "About", href: "https://wtradersworld.com/", external: true },
+    { label: "Contact", href: "https://wtradersworld.com/", external: true },
+    { label: "Careers", href: "https://wtradersworld.com/", external: true },
   ];
 
   const legalLinks = [
-    { label: "Terms", href: "#" },
-    { label: "Privacy", href: "#" },
-    { label: "Cookies", href: "#" },
-    { label: "Risk Disclosure", href: "#" },
+    { label: "Terms", href: "https://wtradersworld.com/legal-documentation", external: true },
+    { label: "Privacy", href: "https://wtradersworld.com/legal-documentation", external: true },
+    { label: "Cookies", href: "https://wtradersworld.com/legal-documentation", external: true },
+    { label: "Risk Disclosure", href: "https://wtradersworld.com/legal-documentation", external: true },
   ];
 
   const email = t("footer.email");
@@ -121,6 +121,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <a
                     href={link.href}
+                    {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                     className="text-sm text-zinc-500 transition-colors duration-200 hover:text-white"
                   >
                     {link.label}
@@ -136,6 +137,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <a
                     href={link.href}
+                    {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                     className="text-sm text-zinc-500 transition-colors duration-200 hover:text-white"
                   >
                     {link.label}
