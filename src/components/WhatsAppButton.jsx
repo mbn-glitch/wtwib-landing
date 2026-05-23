@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-const WHATSAPP_URL = "https://wa.me/971568010724?text=Hello%2C%20I%20need%20help%20with%20my%20Wtraders%20Card";
+const WHATSAPP_URL = "https://wa.me/971568010724?text=Hello%2C%20I%27m%20interested%20in%20the%20Wtraders%20IB%20Program";
 
 function WhatsAppIcon({ className = "w-6 h-6" }) {
   return (

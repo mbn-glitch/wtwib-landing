@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import LanguageSwitcher from "./LanguageSwitcher";
+
+const SECTION_IDS = ["home", "why", "earnings", "how-it-works", "faq"];
+const REGISTRATION_URL = "https://crm.wtradersworld.com/registration-live";
 
 export default function Navbar() {
   const { t } = useTranslation();
@@ -13,11 +15,10 @@ export default function Navbar() {
 
   const navLinks = [
     { label: t("nav.home"), href: "#home" },
-    { label: t("nav.features"), href: "#features" },
-    { label: t("nav.cards"), href: "#cards" },
+    { label: t("nav.why"), href: "#why" },
+    { label: t("nav.earnings"), href: "#earnings" },
     { label: t("nav.howItWorks"), href: "#how-it-works" },
     { label: t("nav.faq"), href: "#faq" },
-    { label: t("nav.helpCenter"), href: "/help-center", isRoute: true },
   ];
 
   useEffect(() => {
@@ -27,8 +28,7 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    const sections = ["home", "features", "cards", "how-it-works", "faq"];
-    const observers = sections.map((id) => {
+    const observers = SECTION_IDS.map((id) => {
       const el = document.getElementById(id);
       if (!el) return null;
       const observer = new IntersectionObserver(
@@ -42,6 +42,16 @@ export default function Navbar() {
     });
     return () => observers.forEach((o) => o?.disconnect());
   }, []);
+
+  /* Close mobile menu on Escape */
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const onKey = (e) => {
+      if (e.key === "Escape") setMobileOpen(false);
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [mobileOpen]);
 
   return (
     <motion.nav
@@ -66,20 +76,12 @@ export default function Navbar() {
 
           <div className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) => {
-              const isActive = !link.isRoute && link.href === `#${activeSection}`;
+              const isActive = link.href === `#${activeSection}`;
               const baseClasses = "px-4 py-2 text-sm transition-colors duration-200 rounded-lg";
               const stateClasses = isActive
                 ? "text-white bg-white/5"
                 : "text-zinc-400 hover:text-white hover:bg-white/5";
-              return link.isRoute ? (
-                <Link
-                  key={link.href}
-                  to={link.href}
-                  className={`${baseClasses} text-zinc-400 hover:text-white hover:bg-white/5`}
-                >
-                  {link.label}
-                </Link>
-              ) : (
+              return (
                 <a
                   key={link.href}
                   href={link.href}
@@ -95,12 +97,12 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center gap-3">
             <LanguageSwitcher />
             <a
-              href="https://crm.wtradersworld.com"
+              href={REGISTRATION_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full bg-fiper px-6 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-fiper-dark hover:shadow-lg hover:shadow-amber-500/20"
             >
-              {t("nav.getYourCard")}
+              {t("nav.becomePartner")}
             </a>
           </div>
 
@@ -126,20 +128,11 @@ export default function Navbar() {
           >
             <div className="px-6 py-6 space-y-1">
               {navLinks.map((link) => {
-                const isActive = !link.isRoute && link.href === `#${activeSection}`;
+                const isActive = link.href === `#${activeSection}`;
                 const stateClasses = isActive
                   ? "text-white bg-white/5"
                   : "text-zinc-400 hover:text-white hover:bg-white/5";
-                return link.isRoute ? (
-                  <Link
-                    key={link.href}
-                    to={link.href}
-                    onClick={() => setMobileOpen(false)}
-                    className="block px-4 py-3 text-base text-zinc-400 hover:text-white rounded-lg hover:bg-white/5 transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                ) : (
+                return (
                   <a
                     key={link.href}
                     href={link.href}
@@ -154,13 +147,13 @@ export default function Navbar() {
               <div className="pt-4 space-y-3">
                 <LanguageSwitcher className="w-full justify-center" />
                 <a
-                  href="https://crm.wtradersworld.com"
+                  href={REGISTRATION_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setMobileOpen(false)}
                   className="block w-full text-center rounded-full bg-fiper px-6 py-3 text-sm font-semibold text-white"
                 >
-                  {t("nav.getYourCard")}
+                  {t("nav.becomePartner")}
                 </a>
               </div>
             </div>

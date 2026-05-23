@@ -1,7 +1,8 @@
 import { useTranslation } from "react-i18next";
-import { motion } from "framer-motion";
-import { ArrowRight, Layers, Globe } from "lucide-react";
-import WtradersCard3D from "./WtradersCard3D";
+import { motion, useReducedMotion } from "framer-motion";
+import { ArrowRight, TrendingUp } from "lucide-react";
+
+const REGISTRATION_URL = "https://crm.wtradersworld.com/registration-live";
 
 const container = {
   hidden: {},
@@ -13,124 +14,241 @@ const fadeUp = {
   show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
 };
 
-export default function Hero() {
-  const { t } = useTranslation();
+/* Single smooth upward path. Decorative — not bound to any data. */
+const CURVE_D =
+  "M 40 260 C 180 260 220 230 320 210 C 420 190 460 160 540 130 C 620 100 680 70 760 30";
 
-  const stats = [
-    { value: t("hero.stat1Value"), label: t("hero.stat1Label"), pos: "top-left" },
-    { value: t("hero.stat2Value"), label: t("hero.stat2Label"), pos: "top-right" },
-    { value: t("hero.stat3Value"), label: t("hero.stat3Label"), pos: "bottom-left" },
-    { value: t("hero.stat4Value"), label: t("hero.stat4Label"), pos: "bottom-right" },
-  ];
+/* Closed path for the area fill under the curve. */
+const AREA_D = `${CURVE_D} L 760 300 L 40 300 Z`;
 
-  const badgePositions = {
-    "top-left": "-top-6 -start-12 lg:-top-4 lg:-start-32",
-    "top-right": "-top-6 -end-12 lg:-top-4 lg:-end-32",
-    "bottom-left": "-bottom-6 -start-12 lg:-bottom-4 lg:-start-32",
-    "bottom-right": "-bottom-6 -end-12 lg:-bottom-4 lg:-end-32",
-  };
+/* Pulsing nodes positioned along the curve. */
+const NODES = [
+  { cx: 320, cy: 210, r: 4 },
+  { cx: 540, cy: 130, r: 4 },
+  { cx: 760, cy: 30, r: 5 },
+];
+
+function EarningsChart({ reduced }) {
+  const drawTransition = reduced
+    ? { duration: 0 }
+    : { duration: 1.2, ease: "easeOut" };
 
   return (
-    <section id="home" className="relative min-h-screen flex flex-col items-center justify-center overflow-x-hidden overflow-y-visible pt-36 sm:pt-32 md:pt-28 lg:pt-24">
+    <svg
+      viewBox="0 0 800 320"
+      className="w-full max-w-[640px] h-auto gpu-layer"
+      preserveAspectRatio="xMidYMid meet"
+      role="presentation"
+      aria-hidden="true"
+    >
+      <defs>
+        <linearGradient id="hero-line-gradient" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stopColor="#C9A961" stopOpacity="0.4" />
+          <stop offset="55%" stopColor="#E5D08C" stopOpacity="1" />
+          <stop offset="100%" stopColor="#E5D08C" stopOpacity="1" />
+        </linearGradient>
+        <linearGradient id="hero-area-gradient" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#C9A961" stopOpacity="0.28" />
+          <stop offset="100%" stopColor="#C9A961" stopOpacity="0" />
+        </linearGradient>
+        <filter id="hero-line-glow" x="-10%" y="-10%" width="120%" height="120%">
+          <feGaussianBlur stdDeviation="6" />
+        </filter>
+      </defs>
+
+      {/* Area fill — fades in after the line draws */}
+      <motion.path
+        d={AREA_D}
+        fill="url(#hero-area-gradient)"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={reduced ? { duration: 0 } : { duration: 1.0, delay: 0.6 }}
+      />
+
+      {/* Blurred glow line behind the main stroke */}
+      <motion.path
+        d={CURVE_D}
+        stroke="#C9A961"
+        strokeOpacity="0.45"
+        strokeWidth="6"
+        strokeLinecap="round"
+        fill="none"
+        filter="url(#hero-line-glow)"
+        initial={{ pathLength: reduced ? 1 : 0 }}
+        animate={{ pathLength: 1 }}
+        transition={drawTransition}
+      />
+
+      {/* Main gradient stroke */}
+      <motion.path
+        d={CURVE_D}
+        stroke="url(#hero-line-gradient)"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        fill="none"
+        initial={{ pathLength: reduced ? 1 : 0 }}
+        animate={{ pathLength: 1 }}
+        transition={drawTransition}
+      />
+
+      {/* Pulsing nodes — appear after the line completes */}
+      {NODES.map((n, i) => (
+        <motion.circle
+          key={i}
+          cx={n.cx}
+          cy={n.cy}
+          r={n.r}
+          fill="#E5D08C"
+          initial={{ scale: 0, opacity: 0 }}
+          animate={
+            reduced
+              ? { scale: 1, opacity: 1 }
+              : { scale: [1, 1.5, 1], opacity: [0.7, 1, 0.7] }
+          }
+          transition={
+            reduced
+              ? { duration: 0 }
+              : {
+                  duration: 2.4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 1.3 + i * 0.3,
+                }
+          }
+        />
+      ))}
+    </svg>
+  );
+}
+
+export default function Hero() {
+  const { t } = useTranslation();
+  const reduced = useReducedMotion();
+
+  const stats = [
+    { value: t("hero.stat1Value"), label: t("hero.stat1Label") },
+    { value: t("hero.stat2Value"), label: t("hero.stat2Label") },
+    { value: t("hero.stat3Value"), label: t("hero.stat3Label") },
+    { value: t("hero.stat4Value"), label: t("hero.stat4Label") },
+  ];
+
+  return (
+    <section
+      id="home"
+      className="relative min-h-screen flex flex-col items-center justify-center overflow-x-hidden overflow-y-visible pt-36 sm:pt-32 md:pt-28 lg:pt-24"
+    >
+      {/* Ambient gold glows + dot pattern (matches sister-project pattern) */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-amber-600/10 blur-[120px]" />
         <div className="absolute bottom-0 left-1/4 w-[600px] h-[600px] rounded-full bg-amber-900/5 blur-[120px]" />
-        <div className="absolute inset-0" style={{ opacity: 0.05, backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
+        <div
+          className="absolute inset-0"
+          style={{
+            opacity: 0.05,
+            backgroundImage:
+              "radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px)",
+            backgroundSize: "40px 40px",
+          }}
+        />
       </div>
 
-      <motion.div variants={container} initial="hidden" animate="show" className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 text-center">
+      <motion.div
+        variants={container}
+        initial="hidden"
+        animate="show"
+        className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 text-center"
+      >
+        {/* Badge */}
         <motion.div variants={fadeUp} className="mt-6 sm:mt-0 mb-8 flex justify-center">
           <span className="inline-flex items-center gap-2 sm:gap-2.5 rounded-full border border-white/10 bg-white/5 px-4 sm:px-5 py-1.5 sm:py-2 text-[11px] sm:text-xs font-medium text-zinc-400 text-center max-w-[90vw]">
-            <Globe size={12} className="text-fiper animate-pulse shrink-0 sm:size-3.5" />
+            <TrendingUp size={12} className="text-fiper shrink-0 sm:size-3.5" />
             <span className="truncate sm:whitespace-normal">{t("hero.badge")}</span>
           </span>
         </motion.div>
 
-        <motion.h1 variants={fadeUp} className="mx-auto max-w-5xl text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl" style={{ letterSpacing: "-0.04em" }}>
-          {t("hero.headline1")}
-          <br />
-          {t("hero.headlineInto")} <span className="text-gradient-red">{t("hero.headline2")}</span>
-          <br />
-          {t("hero.headline3")}
+        {/* Headline */}
+        <motion.h1
+          variants={fadeUp}
+          className="mx-auto max-w-4xl text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl text-balance"
+          style={{ letterSpacing: "-0.04em" }}
+        >
+          {t("hero.headline")}
         </motion.h1>
 
-        <motion.p variants={fadeUp} className="mx-auto mt-6 max-w-2xl text-lg text-zinc-400 sm:text-xl">
-          {t("hero.subtext")}
+        {/* Subheadline */}
+        <motion.p
+          variants={fadeUp}
+          className="mx-auto mt-6 max-w-2xl text-lg text-zinc-400 sm:text-xl"
+        >
+          {t("hero.subheadline")}
         </motion.p>
 
-        <motion.div variants={fadeUp} className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-          <a href="https://crm.wtradersworld.com" target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 rounded-full bg-fiper px-8 py-4 text-sm font-semibold text-white transition-all duration-300 hover:bg-fiper-dark hover:shadow-xl hover:shadow-amber-500/25 hover:scale-[1.02]">
+        {/* Dual CTA */}
+        <motion.div
+          variants={fadeUp}
+          className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center"
+        >
+          <a
+            href={REGISTRATION_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-2 rounded-full bg-fiper px-8 py-4 text-sm font-semibold text-white transition-all duration-300 hover:bg-fiper-dark hover:shadow-xl hover:shadow-amber-500/25 hover:scale-[1.02]"
+          >
             {t("hero.cta1")}
             <ArrowRight size={16} className="transition-transform group-hover:translate-x-1 rtl-flip" />
           </a>
-          <a href="#cards" className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-8 py-4 text-sm font-semibold text-zinc-300 transition-all duration-300 hover:bg-white/10 hover:border-white/25">
-            <Layers size={16} />
+          <a
+            href="#earnings"
+            className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-8 py-4 text-sm font-semibold text-zinc-300 transition-all duration-300 hover:bg-white/10 hover:border-white/25"
+          >
+            <TrendingUp size={16} />
             {t("hero.cta2")}
           </a>
         </motion.div>
 
-        <motion.div variants={fadeUp} className="mt-12 flex justify-center lg:mt-14">
-          <div className="relative">
-            <motion.div
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full pointer-events-none gpu-layer hero-glow-pulse"
-              style={{ background: "radial-gradient(circle, rgba(201,169,97,0.25) 0%, rgba(201,169,97,0.08) 40%, transparent 70%)" }}
-              initial={{ scale: 1, opacity: 0.6 }}
-              whileInView={{ scale: [1, 1.15, 1], opacity: [0.6, 1, 0.6] }}
-              viewport={{ margin: "-100px" }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            />
-            <div className="absolute bottom-[-30px] left-1/2 -translate-x-1/2 w-[80%] h-[60px] rounded-full pointer-events-none" style={{ background: "radial-gradient(ellipse, rgba(201,169,97,0.4) 0%, transparent 70%)", filter: "blur(24px)" }} />
-
-            {/* Mobile: Physical card only (cleaner on narrow screens) */}
-            <div className="lg:hidden">
-              <WtradersCard3D variant="physical" />
-            </div>
-
-            {/* Desktop: Stacked dual-card composition (Virtual behind, Physical in front) */}
-            <div className="hidden lg:block relative w-[480px] h-[320px]">
-              {/* Virtual Card — back layer, tilted further, slightly smaller, lower opacity */}
-              <div className="absolute top-0 right-0 z-10 origin-center" style={{ transform: "rotate(8deg) translate(20px, -10px) scale(0.78)", opacity: 0.88 }}>
-                <WtradersCard3D variant="virtual" />
-              </div>
-
-              {/* Physical Card — front layer, more prominent */}
-              <div className="absolute bottom-0 left-0 z-20 origin-center" style={{ transform: "rotate(-3deg)" }}>
-                <WtradersCard3D variant="physical" />
-              </div>
-            </div>
-
-            {/* Floating stat badges — positioned around the whole composition (desktop only) */}
-            <div className="hidden lg:block">
-              {stats.map((stat, i) => (
-                <motion.div
-                  key={stat.label}
-                  className={`absolute ${badgePositions[stat.pos]} z-30 gpu-layer`}
-                  initial={{ y: 0 }}
-                  whileInView={{ y: [-5, 5, -5] }}
-                  viewport={{ margin: "-50px" }}
-                  transition={{ duration: 4 + i * 0.5, repeat: Infinity, ease: "easeInOut", delay: i * 0.4 }}
-                >
-                  <div className="rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 px-5 py-3 text-center transition-all duration-300 hover:bg-white/[0.08] hover:border-amber-500/20 hover:shadow-lg hover:shadow-amber-500/10">
-                    <p className="text-lg font-bold text-white">{stat.value}</p>
-                    <p className="text-[11px] text-zinc-500">{stat.label}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
+        {/* Earnings chart — hidden on small mobile, shown from sm: up. Floating wraps the SVG, not the stats. */}
+        <motion.div
+          variants={fadeUp}
+          className="hidden sm:flex mt-14 lg:mt-16 justify-center"
+        >
+          <motion.div
+            className="relative w-full max-w-[640px]"
+            initial={{ y: 0 }}
+            whileInView={reduced ? undefined : { y: [-4, 4, -4] }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={
+              reduced
+                ? undefined
+                : { duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1.4 }
+            }
+          >
+            <EarningsChart reduced={reduced} />
+          </motion.div>
         </motion.div>
 
-        <motion.div variants={fadeUp} className="mt-10 grid grid-cols-2 gap-3 lg:hidden">
+        {/* Stat badges row — 2×2 on mobile, 4-up on desktop */}
+        <motion.div
+          variants={fadeUp}
+          className="mt-12 sm:mt-14 grid grid-cols-2 lg:grid-cols-4 gap-3 max-w-3xl mx-auto"
+        >
           {stats.map((stat) => (
-            <div key={stat.label} className="rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-4 text-center">
-              <p className="text-xl font-bold text-white">{stat.value}</p>
-              <p className="mt-0.5 text-[11px] text-zinc-500">{stat.label}</p>
+            <div
+              key={stat.label}
+              className="rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 px-4 py-3 text-center transition-all duration-300 hover:bg-white/[0.08] hover:border-amber-500/20"
+            >
+              <p className="text-xl sm:text-2xl font-bold text-white leading-tight">
+                {stat.value}
+              </p>
+              <p className="mt-1 text-[11px] sm:text-xs text-zinc-500">
+                {stat.label}
+              </p>
             </div>
           ))}
         </motion.div>
       </motion.div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent" />
+      {/* Bottom fade to black */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent pointer-events-none" />
     </section>
   );
 }

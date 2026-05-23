@@ -3,14 +3,9 @@ import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import en from "./locales/en.json";
 
-/* Only English is bundled upfront. Other locales are code-split and
-   loaded on demand when the user switches language. */
+/* English is bundled. Arabic is code-split and loaded on demand. */
 const loaders = {
   ar: () => import("./locales/ar.json"),
-  tr: () => import("./locales/tr.json"),
-  fr: () => import("./locales/fr.json"),
-  es: () => import("./locales/es.json"),
-  pt: () => import("./locales/pt.json"),
 };
 
 i18n
@@ -19,7 +14,7 @@ i18n
   .init({
     resources: { en: { translation: en } },
     fallbackLng: "en",
-    supportedLngs: ["en", "ar", "tr", "fr", "es", "pt"],
+    supportedLngs: ["en", "ar"],
     load: "languageOnly",
     interpolation: { escapeValue: false },
     detection: {
@@ -50,7 +45,6 @@ export async function changeLanguageSafely(lng) {
    We don't await here because startup shouldn't block — fallback to English. */
 if (i18n.language && i18n.language !== "en") {
   ensureLoaded(i18n.language).then(() => {
-    /* Force re-render after async load by re-emitting languageChanged */
     i18n.emit("languageChanged", i18n.language);
   });
 }
@@ -60,8 +54,4 @@ export default i18n;
 export const LANGUAGES = [
   { code: "en", label: "English", native: "EN", flag: "🇬🇧" },
   { code: "ar", label: "العربية", native: "عربي", flag: "🇸🇦" },
-  { code: "tr", label: "Türkçe", native: "TR", flag: "🇹🇷" },
-  { code: "fr", label: "Français", native: "FR", flag: "🇫🇷" },
-  { code: "es", label: "Español", native: "ES", flag: "🇪🇸" },
-  { code: "pt", label: "Português", native: "PT", flag: "🇧🇷" },
 ];
