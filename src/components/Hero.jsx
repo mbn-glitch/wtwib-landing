@@ -135,7 +135,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-x-hidden overflow-y-visible pt-36 sm:pt-32 md:pt-28 lg:pt-24"
+      className="relative min-h-screen flex flex-col items-center justify-center overflow-x-hidden overflow-y-visible pt-32 sm:pt-36 md:pt-40 lg:pt-44"
     >
       {/* Ambient gold glows + dot pattern (matches sister-project pattern) */}
       <div className="absolute inset-0 pointer-events-none">
@@ -159,7 +159,7 @@ export default function Hero() {
         className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 text-center"
       >
         {/* Badge */}
-        <motion.div variants={fadeUp} className="mt-6 sm:mt-0 mb-8 flex justify-center">
+        <motion.div variants={fadeUp} className="mt-4 sm:mt-6 mb-10 flex justify-center">
           <span className="inline-flex items-center gap-2 sm:gap-2.5 rounded-full border border-white/10 bg-white/5 px-4 sm:px-5 py-1.5 sm:py-2 text-[11px] sm:text-xs font-medium text-zinc-400 text-center max-w-[90vw]">
             <TrendingUp size={12} className="text-fiper shrink-0 sm:size-3.5" />
             <span className="truncate sm:whitespace-normal">{t("hero.badge")}</span>
