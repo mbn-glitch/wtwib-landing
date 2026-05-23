@@ -3,9 +3,14 @@ import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import en from "./locales/en.json";
 
-/* English is bundled. Arabic is code-split and loaded on demand. */
+/* English is bundled. Every other locale is code-split and loaded on demand. */
 const loaders = {
   ar: () => import("./locales/ar.json"),
+  nl: () => import("./locales/nl.json"),
+  tr: () => import("./locales/tr.json"),
+  fr: () => import("./locales/fr.json"),
+  es: () => import("./locales/es.json"),
+  pt: () => import("./locales/pt.json"),
 };
 
 i18n
@@ -14,7 +19,7 @@ i18n
   .init({
     resources: { en: { translation: en } },
     fallbackLng: "en",
-    supportedLngs: ["en", "ar"],
+    supportedLngs: ["en", "ar", "nl", "tr", "fr", "es", "pt"],
     load: "languageOnly",
     interpolation: { escapeValue: false },
     detection: {
@@ -52,6 +57,11 @@ if (i18n.language && i18n.language !== "en") {
 export default i18n;
 
 export const LANGUAGES = [
+  { code: "nl", label: "Nederlands", native: "NL", flag: "🇳🇱" },
   { code: "en", label: "English", native: "EN", flag: "🇬🇧" },
-  { code: "ar", label: "العربية", native: "عربي", flag: "🇸🇦" },
+  { code: "ar", label: "العربية", native: "AR", flag: "🇸🇦" },
+  { code: "tr", label: "Türkçe", native: "TR", flag: "🇹🇷" },
+  { code: "fr", label: "Français", native: "FR", flag: "🇫🇷" },
+  { code: "es", label: "Español", native: "ES", flag: "🇪🇸" },
+  { code: "pt", label: "Português", native: "PT", flag: "🇧🇷" },
 ];
